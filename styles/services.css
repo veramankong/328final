@@ -597,7 +597,7 @@ section
 .main_menu_list > li
 {
 	display: inline-block;
-	margin-right: 46px;
+	margin-right: 60px;
 	height: 100%;
 }
 .main_menu_list > li:last-child
@@ -622,6 +622,7 @@ section
 .main_menu_list > li.active > a
 {
 	color: #11100e;
+	font-weight: bold;
 }
 .main_menu_list li a
 {
@@ -640,7 +641,7 @@ section
 }
 .main_menu_list li a:hover
 {
-	color: #ffa800;
+	color: #11100e;
 }
 .main_menu_list li a svg
 {
@@ -655,7 +656,7 @@ section
 .main_menu_list li.hassubs.active .arrow_d,
 .main_menu_list li.hassubs:hover .arrow_d
 {
-	stroke: #ffa800;
+	stroke: #11100e;
 }
 .main_menu_list li ul
 {
@@ -665,7 +666,7 @@ section
 	left: -15px;
 	visibility: hidden;
 	opacity: 0;
-	background: #FFFFFF;
+	background: #ffa800;
 	padding: 15px;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
@@ -685,7 +686,7 @@ section
 }
 .main_menu_list li ul li a
 {
-	color: #003679;
+	color: #FFFFFF;
 	line-height: 40px;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
@@ -695,7 +696,7 @@ section
 }
 .main_menu_list li ul li a:hover
 {
-	color: #ffa800;
+	color: #11100e;
 }
 .main_menu_list li ul li a img
 {
@@ -729,41 +730,6 @@ section
 	color: #838383;
 	font-weight: bold;
 	margin-left: 8px;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.main_menu_phone:hover span,
-.main_menu_email:hover span
-{
-	color: #003679;
-}
-.main_menu_phone svg,
-.main_menu_email svg
-{
-	max-width: 100%;
-	max-height: 100%;
-	display: inline-block;
-    width: 22px;
-    height: 22px;
-    vertical-align: middle;
-}
-.main_menu_phone svg path,
-.main_menu_email svg path
-{
-	fill: #838383;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.main_menu_phone:hover svg path,
-.main_menu_email:hover svg path
-{
-	fill: #003679;
 }
 .main_menu_social
 {
@@ -855,7 +821,7 @@ section
 }
 .main_menu_search_button:hover .mag_path
 {
-	fill: #ffa800;
+	fill: #11100e;
 }
 .main_menu_search_content
 {
@@ -879,47 +845,7 @@ section
 	opacity: 1;
 	top: 50px;
 }
-.search_input
-{
-	background: #ffa800;
-	border: solid 2px #d6d6d6;
-	outline: none;
-	height: 40px;
-	width: 200px;
-	padding-left: 15px;
-	padding-right: 15px;
-	color: #FFFFFF;
-}
-.search_input::-webkit-input-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: rgba(255, 255, 255, 0.5) !important;
-}
-.search_input:-moz-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: rgba(255, 255, 255, 0.5) !important;
-}
-.search_input::-moz-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: rgba(255, 255, 255, 0.5) !important;
-} 
-.search_input:-ms-input-placeholder
-{ 
-	font-size: 12px !important;
-	font-style: italic;
-	color: rgba(255, 255, 255, 0.5) !important;
-}
-.search_input::input-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: rgba(255, 255, 255, 0.5) !important;
-}
+
 
 /*********************************
 5. Menu
@@ -1343,7 +1269,7 @@ section
 .footer
 {
 	padding-top: 120px;
-	background: #012046;
+	background: #15191f;
 }
 .footer_logo
 {
@@ -1504,7 +1430,7 @@ section
 {
 	width: 100%;
 	margin-top: 110px;
-	background: #001228;
+	background: #0d1016;
 }
 .copyright_content
 {

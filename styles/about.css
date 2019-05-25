@@ -401,7 +401,7 @@ section
 
 .top_bar
 {
-	background: #FFFFFF;
+	background: #f8f8f8;
 }
 .top_bar_container
 {
@@ -441,7 +441,7 @@ section
 {
 	position: absolute;
 	left: 0;
-	top: -10px;
+	top: -25px;
 	width: 57px;
 	height: 38px;
 }
@@ -551,7 +551,7 @@ section
 .main_menu
 {
 	width: 100%;
-	background: #003679;
+	background: #ffa800;
 }
 .main_menu_container
 {
@@ -561,7 +561,7 @@ section
 .main_menu_list > li
 {
 	display: inline-block;
-	margin-right: 46px;
+	margin-right: 60px;
 	height: 100%;
 }
 .main_menu_list > li:last-child
@@ -580,12 +580,13 @@ section
 	left: -9px;
 	width: calc(100% + 12px);
 	height: 3px;
-	background: #ffa800;
+	background: #11100e;
 	content: '';
 }
 .main_menu_list > li.active > a
 {
-	color: #ffa800;
+	color: #11100e;
+	font-weight: bold;
 }
 .main_menu_list li a
 {
@@ -604,7 +605,7 @@ section
 }
 .main_menu_list li a:hover
 {
-	color: #ffa800;
+	color: #11100e;
 }
 .main_menu_list li a svg
 {
@@ -619,7 +620,7 @@ section
 .main_menu_list li.hassubs.active .arrow_d,
 .main_menu_list li.hassubs:hover .arrow_d
 {
-	stroke: #ffa800;
+	stroke: #11100e;
 }
 .main_menu_list li ul
 {
@@ -629,7 +630,7 @@ section
 	left: -15px;
 	visibility: hidden;
 	opacity: 0;
-	background: #FFFFFF;
+	background: #ffa800;
 	padding: 15px;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
@@ -649,7 +650,7 @@ section
 }
 .main_menu_list li ul li a
 {
-	color: #003679;
+	color: #FFFFFF;
 	line-height: 40px;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
@@ -659,7 +660,7 @@ section
 }
 .main_menu_list li ul li a:hover
 {
-	color: #ffa800;
+	color: #11100e;
 }
 .main_menu_list li ul li a img
 {
@@ -693,41 +694,6 @@ section
 	color: #838383;
 	font-weight: bold;
 	margin-left: 8px;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.main_menu_phone:hover span,
-.main_menu_email:hover span
-{
-	color: #003679;
-}
-.main_menu_phone svg,
-.main_menu_email svg
-{
-	max-width: 100%;
-	max-height: 100%;
-	display: inline-block;
-    width: 22px;
-    height: 22px;
-    vertical-align: middle;
-}
-.main_menu_phone svg path,
-.main_menu_email svg path
-{
-	fill: #838383;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.main_menu_phone:hover svg path,
-.main_menu_email:hover svg path
-{
-	fill: #003679;
 }
 .main_menu_social
 {
@@ -819,7 +785,7 @@ section
 }
 .main_menu_search_button:hover .mag_path
 {
-	fill: #ffa800;
+	fill: #11100e;
 }
 .main_menu_search_content
 {
@@ -843,47 +809,7 @@ section
 	opacity: 1;
 	top: 50px;
 }
-.search_input
-{
-	background: #ffa800;
-	border: solid 2px #d6d6d6;
-	outline: none;
-	height: 40px;
-	width: 200px;
-	padding-left: 15px;
-	padding-right: 15px;
-	color: #FFFFFF;
-}
-.search_input::-webkit-input-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: rgba(255, 255, 255, 0.5) !important;
-}
-.search_input:-moz-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: rgba(255, 255, 255, 0.5) !important;
-}
-.search_input::-moz-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: rgba(255, 255, 255, 0.5) !important;
-} 
-.search_input:-ms-input-placeholder
-{ 
-	font-size: 12px !important;
-	font-style: italic;
-	color: rgba(255, 255, 255, 0.5) !important;
-}
-.search_input::input-placeholder
-{
-	font-size: 12px !important;
-	font-style: italic;
-	color: rgba(255, 255, 255, 0.5) !important;
-}
+
 
 /*********************************
 5. Menu
@@ -962,6 +888,143 @@ section
 .menu_register_login .register::after
 {
 	color: #11100e;
+}
+
+/*********************************
+6. Contact
+*********************************/
+
+.contact
+{
+	padding-top: 110px;
+	padding-bottom: 110px;
+}
+.info
+{
+	max-width: 260px;
+}
+.info_title
+{
+	font-family: 'gill', sans-serif;
+	font-size: 30px;
+	color: #212121;
+	margin-top: 50px;
+}
+.info ul
+{
+	margin-top: 19px;
+}
+.info ul li
+{
+	margin-bottom: 19px;
+	font-size: 14px;
+	color: #838383;
+}
+.contact_form_container
+{
+	margin-top: 60px;
+}
+.contact_form
+{
+	width: 100%;
+}
+.input_item
+{
+	width: 100%;
+	height: 47px;
+	border: solid 2px #b5b5b5;
+	margin-bottom: 24px;
+	padding-left: 27px;
+	outline: none;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.dropdown_item
+{
+	-webkit-appearance:none;
+	-moz-appearance:none;
+	-ms-appearance:none;
+	-o-appearance:none;
+	appearance:none;
+	-webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+	-webkit-user-select: none;
+	font-size: 12px !important;
+	font-style: italic !important;
+	font-weight: 400 !important;
+	color: #a0a0a0 !important;
+	background-image: url(../images/dropdown.png);
+	background-position: center right;
+	background-repeat: no-repeat;
+}
+.input_item:focus
+{
+	border-color: #003679;
+}
+.dropdown_item option
+{
+	font-style: normal;
+	font-size: 14px;
+	color: #212121;
+}
+.contact_message
+{
+	height: 122px;
+	padding-top: 12px;
+}
+.input_item::-webkit-input-placeholder
+{
+	font-size: 12px !important;
+	font-style: italic !important;
+	font-weight: 400 !important;
+	color: #a0a0a0 !important;
+}
+.input_item:-moz-placeholder
+{
+	font-size: 12px !important;
+	font-style: italic !important;
+	font-weight: 400 !important;
+	color: #a0a0a0 !important;
+}
+.input_item::-moz-placeholder
+{
+	font-size: 12px !important;
+	font-style: italic !important;
+	font-weight: 400 !important;
+	color: #a0a0a0 !important;
+}
+.input_item:-ms-input-placeholder
+{
+	font-size: 12px !important;
+	font-style: italic !important;
+	font-weight: 400 !important;
+	color: #a0a0a0 !important;
+}
+.input_item::input-placeholder
+{
+	font-size: 12px !important;
+	font-style: italic !important;
+	font-weight: 400 !important;
+	color: #a0a0a0 !important;
+}
+.contact_button
+{
+	display: block;
+	position: relative;
+	width: 100%;
+	height: 47px;
+	background: #ffa800;
+	line-height: 47px;
+	font-size: 14px;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	font-weight: 500;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	z-index: 1;
 }
 
 /*********************************
@@ -1332,7 +1395,7 @@ section
 .footer
 {
 	padding-top: 120px;
-	background: #012046;
+	background: #15191f;
 }
 .footer_logo
 {
@@ -1493,7 +1556,7 @@ section
 {
 	width: 100%;
 	margin-top: 110px;
-	background: #001228;
+	background: #0d1016;
 }
 .copyright_content
 {

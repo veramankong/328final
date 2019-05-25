@@ -224,6 +224,11 @@
 
 @media only screen and (max-width: 767px)
 {
+	.main_menu_social,
+	.main_menu_contact
+	{
+		display: none !important;
+	}
 	.main_menu_content,
 	.register_login
 	{

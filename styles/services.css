@@ -437,7 +437,7 @@ section
 
 .top_bar
 {
-	background: #FFFFFF;
+	background: #f8f8f8;
 }
 .top_bar_container
 {
@@ -477,7 +477,7 @@ section
 {
 	position: absolute;
 	left: 0;
-	top: -10px;
+	top: -25px;
 	width: 57px;
 	height: 38px;
 }
@@ -587,7 +587,7 @@ section
 .main_menu
 {
 	width: 100%;
-	background: #003679;
+	background: #ffa800;
 }
 .main_menu_container
 {
@@ -616,12 +616,12 @@ section
 	left: -9px;
 	width: calc(100% + 12px);
 	height: 3px;
-	background: #ffa800;
+	background: #11100e;
 	content: '';
 }
 .main_menu_list > li.active > a
 {
-	color: #ffa800;
+	color: #11100e;
 }
 .main_menu_list li a
 {

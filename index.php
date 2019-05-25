@@ -38,6 +38,30 @@ $f3->route('GET /home', function() {
     echo $view->render('views/home.html');
 });
 
+//Define a about us route
+$f3->route('GET /about', function() {
+
+    //Display summary
+    $view = new Template();
+    echo $view->render('views/about.html');
+});
+
+//Define a services route
+$f3->route('GET /services', function() {
+
+    //Display summary
+    $view = new Template();
+    echo $view->render('views/services.html');
+});
+
+//Define a contact route
+$f3->route('GET /reviews', function() {
+
+    //Display summary
+    $view = new Template();
+    echo $view->render('views/reviews.html');
+});
+
 //Define a contact route
 $f3->route('GET /contact', function() {
 

@@ -349,24 +349,36 @@
                             <div class="section_title">Request a Call Back</div>
                         </div>
                         <div class="call_form_container">
-                            <form action="#" class="call_form">
+                            <form action="#" method="post" class="call_form">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <input type="text" class="input_item" placeholder="Your Name"
-                                               required="required">
+                                              name="name" required="required">
                                     </div>
                                     <div class="col-md-6">
                                         <input type="email" class="input_item" placeholder="Your E-mail"
-                                               required="required">
+                                               name="email" required="required">
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="text" class="input_item" placeholder="Your Phone">
+                                        <input type="text" class="input_item" name="phone" placeholder="Your Phone">
                                     </div>
                                     <div class="col-md-6">
-                                        <select class="dropdown_item input_item">
-                                            <option>Business type</option>
-                                            <option>Business type</option>
-                                            <option>Business type</option>
+                                        <input type="text" class="input_item" name="address" placeholder="Address">
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <input type="text" class="input_item" name="zip" placeholder="Zip Code">
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <input type="text" class="input_item" name="state" placeholder="State">
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <select  name= "type" class="dropdown_item input_item">
+                                            <option>Residential</option>
+                                            <option>Commercial</option>
                                         </select>
                                     </div>
                                     <div class="col-md-12">

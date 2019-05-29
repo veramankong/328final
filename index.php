@@ -16,6 +16,10 @@ $user = $_SERVER['USER'];
 //Required file
 require_once('vendor/autoload.php');
 
+session_start();
+//validate form
+require_once('model/formvalidation.php');
+
 //Instantiate Fat-Free
 $f3 = Base::instance();
 
@@ -23,7 +27,7 @@ $f3 = Base::instance();
 $f3->set('DEBUG', 3);
 
 //Define a default route
-$f3->route('GET /', function() {
+$f3->route('GET /', function () {
 
     //Display summary
     $view = new Template();
@@ -31,7 +35,7 @@ $f3->route('GET /', function() {
 });
 
 //Define a home route
-$f3->route('GET /home', function() {
+$f3->route('GET /home', function () {
 
     //Display summary
     $view = new Template();
@@ -39,7 +43,7 @@ $f3->route('GET /home', function() {
 });
 
 //Define a about us route
-$f3->route('GET /about', function() {
+$f3->route('GET /about', function () {
 
     //Display summary
     $view = new Template();
@@ -47,15 +51,83 @@ $f3->route('GET /about', function() {
 });
 
 //Define a services route
-$f3->route('GET /services', function() {
+$f3->route('GET|POST /services', function ($f3) {
 
+    $_SESSION = array();
+    $isValid = true;
+
+    if (!empty($_POST)) {
+
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $address = $_POST['address'];
+        $zip = $_POST['zip'];
+        $state = $_POST['state'];
+        $type = $_POST['type'];
+
+        //Add data to hive
+        $f3->set('name', $name);
+        $f3->set('email', $email);
+        $f3->set('phone', $phone);
+        $f3->set('address', $address);
+        $f3->set('zip', $zip);
+        $f3->set('state', $state);
+        $f3->set('zip', $zip);
+        $f3->set('type', $type);
+
+
+        // validate  name
+        if (validName($name)) {
+            $_SESSION['name'] = $name;
+        } else {
+            $f3->set("errors['fname']", "Please enter your name");
+            $isValid = false;
+        }
+
+
+        if (!empty($email)) {
+            $_SESSION['email'] = $email;
+        } else {
+            $f3->set("errors['email']", "Please enter your email address");
+            $isValid = false;
+        }
+
+        // validate phone number
+        if (validPhone($phone)) {
+            $_SESSION['phone'] = $phone;
+        } else {
+            $f3->set("errors['phone']", "Please enter 10 digit phone number");
+            $isValid = false;
+        }
+
+        // saves address if set
+        if (isset($_POST['address'])) {
+            $_SESSION['address'] = $address;
+        }
+        if (isset($_POST['zip'])) {
+            $_SESSION['zip'] = $zip;
+        }
+
+        if (!empty($type)) {
+            $_SESSION['type'] = $type;
+        } else {
+            $f3->set("errors['type']", "Please select a property type");
+            $isValid = false;
+        }
+        if ($isValid) {
+
+            echo "Name : $name Email : $email";
+        }
+    }
     //Display summary
     $view = new Template();
     echo $view->render('views/services.html');
+
 });
 
 //Define a contact route
-$f3->route('GET /reviews', function() {
+$f3->route('GET /reviews', function () {
 
     //Display summary
     $view = new Template();
@@ -63,7 +135,7 @@ $f3->route('GET /reviews', function() {
 });
 
 //Define a contact route
-$f3->route('GET /contact', function() {
+$f3->route('GET /contact', function () {
 
     //Display summary
     $view = new Template();

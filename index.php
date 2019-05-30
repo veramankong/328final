@@ -23,8 +23,8 @@ require_once('model/formvalidation.php');
 //Instantiate Fat-Free
 $f3 = Base::instance();
 
-$f3->set('states',array('Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'));
-$f3->set('types',array('Residential','Commercial'));
+$f3->set('states', array('Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'));
+$f3->set('types', array('Residential', 'Commercial'));
 
 //Turn on Fat-Free error reporting
 $f3->set('DEBUG', 3);
@@ -84,13 +84,14 @@ $f3->route('GET|POST /services', function ($f3) {
         if (validName($name)) {
             $_SESSION['name'] = $name;
         } else {
-            $f3->set("errors['fname']", "Please enter your name");
+            $f3->set("errors['name']", "Please enter your name");
             $isValid = false;
         }
 
 
         if (!empty($email)) {
             $_SESSION['email'] = $email;
+
         } else {
             $f3->set("errors['email']", "Please enter your email address");
             $isValid = false;
@@ -99,6 +100,7 @@ $f3->route('GET|POST /services', function ($f3) {
         // validate phone number
         if (validPhone($phone)) {
             $_SESSION['phone'] = $phone;
+
         } else {
             $f3->set("errors['phone']", "Please enter 10 digit phone number");
             $isValid = false;
@@ -122,18 +124,17 @@ $f3->route('GET|POST /services', function ($f3) {
                 $isValid = false;
             }
 
-            if (isset($_POST['state'])) {
-                $type = $_POST['type'];
-                if ($type != "") {
-                $_SESSION['type'] = $type;
-            }
-            } else {
-                $f3->set("errors['type']", "Please select a property type");
-                $isValid = false;
-            }
+            print_r($_SESSION['propertyType']);
             if ($isValid) {
 
-                echo "Name : $name Email : $email";
+//                $f3->reroute("/reviews");
+                if (isset($_POST['type'])) {
+                    $commercial = new commercialcustomer($name, $email, $phone, $state, $type);
+                    $_SESSION['propertyType'] = $commercial;
+                } else {
+                    $customer = new customer($name, $email, $phone, $state, $type);
+                    $_SESSION['propertyType'] = $customer;
+                }
             }
         }
     }

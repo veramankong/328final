@@ -352,33 +352,63 @@
                             <form action="#" method="post" class="call_form">
                                 <div class="row">
                                     <div class="col-md-6">
+                                        <!-- validation error message -->
+                                        <check if="{{ isset(@errors['name']) }}">
+                                            <span class="err">{{ @errors['name'] }}</span>
+                                        </check>
                                         <input type="text" class="input_item" placeholder="Your Name"
-                                              name="name" required="required">
+                                              name="name" required="required" value="{{ @POST['name']}}">
                                     </div>
                                     <div class="col-md-6">
+                                        <!-- validation error message -->
+                                        <check if="{{ isset(@errors['email']) }}">
+                                            <span class="err">{{ @errors['email'] }}</span>
+                                        </check>
                                         <input type="email" class="input_item" placeholder="Your E-mail"
-                                               name="email" required="required">
+                                               name="email" value="{{ @POST['email']}}" required="required">
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="text" class="input_item" name="phone" placeholder="Your Phone">
+                                        <!-- validation error message -->
+                                        <check if="{{ isset(@errors['phone']) }}">
+                                            <span class="err">{{ @errors['phone'] }}</span>
+                                        </check>
+                                        <input type="text" class="input_item" name="phone" value="{{ @POST['phone']}}" placeholder="Your Phone">
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="text" class="input_item" name="address" placeholder="Address">
+
+                                        <input type="text" class="input_item" name="address" placeholder="Address" value="{{ @POST['address']}}">
                                     </div>
 
                                     <div class="col-md-6">
 
-                                        <input type="text" class="input_item" name="zip" placeholder="Zip Code">
+                                        <input type="text" class="input_item" name="zip" placeholder="Zip Code" value="{{ @POST['zip']}}">
                                     </div>
 
                                     <div class="col-md-6">
-                                        <input type="text" class="input_item" name="state" placeholder="State">
+                                        <!-- validation error message -->
+                                        <check if="{{ isset(@errors['state']) }}">
+                                            <span class="err">{{ @errors['state'] }}</span>
+                                        </check>
+                                        <select class="dropdown-item input_item" name="state">
+                                            <repeat group="{{ @states }}" value="{{ @stateOption }}">
+                                                <option <check if="{{@stateOption == @$_SESSION['state'] }}">selected</check>>
+                                                {{ @stateOption}}
+                                                </option>
+                                            </repeat>
+                                        </select>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <select  name= "type" class="dropdown_item input_item">
-                                            <option>Residential</option>
-                                            <option>Commercial</option>
+                                        <!-- validation error message -->
+                                        <check if="{{ isset(@errors['type']) }}">
+                                            <span class="err">{{ @errors['type'] }}</span>
+                                        </check>
+                                        <select class="dropdown-item input_item" name="type">
+                                            <repeat group="{{ @types }}" value="{{ @typeOption }}">
+                                                <option <check if="{{@typeOption == @$_SESSION['type'] }}">selected</check>>
+                                                {{ @typeOption}}
+                                                </option>
+                                            </repeat>
                                         </select>
                                     </div>
                                     <div class="col-md-12">
@@ -396,7 +426,6 @@
     </div>
 
     <!-- Footer -->
-
     <footer class="footer">
         <div class="copyright">
             <div class="container">

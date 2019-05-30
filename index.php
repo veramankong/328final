@@ -23,6 +23,9 @@ require_once('model/formvalidation.php');
 //Instantiate Fat-Free
 $f3 = Base::instance();
 
+$f3->set('states',array('Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'District of Columbia', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'));
+$f3->set('types',array('Residential','Commercial'));
+
 //Turn on Fat-Free error reporting
 $f3->set('DEBUG', 3);
 
@@ -109,15 +112,29 @@ $f3->route('GET|POST /services', function ($f3) {
             $_SESSION['zip'] = $zip;
         }
 
-        if (!empty($type)) {
-            $_SESSION['type'] = $type;
-        } else {
-            $f3->set("errors['type']", "Please select a property type");
-            $isValid = false;
-        }
-        if ($isValid) {
+        if (isset($_POST['state'])) {
+            $state = $_POST['state'];
+            if ($state != "") {
+                $_SESSION['state'] = $state;
 
-            echo "Name : $name Email : $email";
+            } else {
+                $f3->set("error['state']", "Please select a state.");
+                $isValid = false;
+            }
+
+            if (isset($_POST['state'])) {
+                $type = $_POST['type'];
+                if ($type != "") {
+                $_SESSION['type'] = $type;
+            }
+            } else {
+                $f3->set("errors['type']", "Please select a property type");
+                $isValid = false;
+            }
+            if ($isValid) {
+
+                echo "Name : $name Email : $email";
+            }
         }
     }
     //Display summary

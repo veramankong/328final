@@ -124,11 +124,11 @@ $f3->route('GET|POST /services', function ($f3) {
                 $isValid = false;
             }
 
-            print_r($_SESSION['propertyType']);
+//            print_r($_SESSION['propertyType']);
             if ($isValid) {
 
 //                $f3->reroute("/reviews");
-                if (isset($_POST['type'])) {
+                if ($_POST['type'] == "commercial") {
                     $commercial = new commercialcustomer($name, $email, $phone, $state, $type);
                     $_SESSION['propertyType'] = $commercial;
                 } else {
@@ -153,8 +153,58 @@ $f3->route('GET /reviews', function () {
 });
 
 //Define a contact route
-$f3->route('GET /contact', function () {
+$f3->route('GET|POST /contact', function ($f3) {
 
+    $_SESSION = array();
+    $isValid = true;
+
+    if (!empty($_POST)) {
+
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $message = $_POST['message'];
+
+        //Add data to hive
+        $f3->set('name', $name);
+        $f3->set('email', $email);
+        $f3->set('phone', $phone);
+        $f3->set('message', $message);
+
+        // validate  name
+        if (validName($name)) {
+            $_SESSION['name'] = $name;
+        } else {
+            $f3->set("errors['name']", "Please enter your name");
+            $isValid = false;
+        }
+
+
+        if (!empty($email)) {
+            $_SESSION['email'] = $email;
+
+        } else {
+            $f3->set("errors['email']", "Please enter your email address");
+            $isValid = false;
+        }
+
+        // validate phone number
+        if (validPhone($phone)) {
+            $_SESSION['phone'] = $phone;
+
+        } else {
+            $f3->set("errors['phone']", "Please enter 10 digit phone number");
+            $isValid = false;
+        }
+
+        if (!empty($message)) {
+            $_SESSION['message'] = $message;
+        }
+
+        if ($isValid) {
+//            $f3->reroute("/reviews");
+        }
+    }
     //Display summary
     $view = new Template();
     echo $view->render('views/contact.html');

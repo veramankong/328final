@@ -41,6 +41,13 @@
 2. Body and some general stuff
 *********************************/
 
+/*
+error styling
+ */
+.err
+{
+	color: darkred;
+}
 *
 {
 	margin: 0;

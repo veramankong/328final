@@ -126,6 +126,8 @@ $f3->route('GET|POST /services', function ($f3) {
 
 //            print_r($_SESSION['propertyType']);
             if ($isValid) {
+// print Service ID for client
+
 
 //                $f3->reroute("/reviews");
                 if ($_POST['type'] == "commercial") {

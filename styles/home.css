@@ -39,6 +39,11 @@
 	src: url('../fonts/gil_b.ttf')  format('truetype');
 	font-weight: bold;
 }
+@font-face
+{
+	font-family: 'shadow';
+	src: url('../fonts/Shadow of Xizor.ttf')  format('truetype');
+}
 
 /*********************************
 2. Body and some general stuff
@@ -59,6 +64,8 @@ body
 	font-weight: 400;
 	background: #FFFFFF;
 	color: #a5a5a5;
+	overflow-x: hidden;
+
 }
 div
 {
@@ -304,7 +311,8 @@ section
 .home_slider_content
 {
 	position: absolute;
-	top: 35%;
+	top: 28%;
+	bottom: 1%;
 	left: 50%;
 	-webkit-transform: translateX(-50%);
 	-moz-transform: translateX(-50%);
@@ -314,9 +322,14 @@ section
 	width: 776px;
 	padding-left: 25px;
 	padding-right: 25px;
-	padding-top: 74px;
-	padding-bottom: 55px;
+	padding-top: 25px;
+	padding-bottom: 25px;
 	background: rgba(17,16,14,0.83);
+}
+.home_slider_content img {
+	max-width: 100%;
+	max-height: 100%;
+	overflow-x: hidden;
 }
 .home_slider_content h1
 {
@@ -473,7 +486,7 @@ section
 }
 .logo_line_1
 {
-	font-family: 'gill', sans-serif;
+	font-family: 'shadow', sans-serif;
 	font-size: 30px;
 	line-height: 0.75;
 	letter-spacing: 0.02em;
@@ -873,9 +886,8 @@ section
 
 .intro
 {
-	padding-top: 110px;
-	padding-bottom: 110px;
-	background: #f5f9fa;
+	padding-top: 60px;
+	padding-bottom: 60px;
 }
 .intro_image
 {
@@ -885,7 +897,8 @@ section
 }
 .intro_image img
 {
-	max-width: 100%;
+	margin-top: 20px;
+	max-width: 80%;
 }
 .intro_title
 {
@@ -1069,167 +1082,9 @@ section
 	background: #ffa800;
 }
 
-/*********************************
-8. Converter
-*********************************/
-
-.converter
-{
-	padding-top: 130px;
-	padding-bottom: 138px;
-}
-.converter_background
-{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-.converter_title
-{
-	font-family: 'gill', sans-serif;
-	color: #FFFFFF;
-	margin-top: -1px;
-}
-.converter_subtitle
-{
-	font-family: 'gill', sans-serif;
-	font-size: 12px;
-	text-transform: uppercase;
-	letter-spacing: 0.2em;
-	color: #a5a5a5;
-	padding-left: 2px;
-	padding-top: 30px;
-}
-.converter_subtitle::after
-{
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 5px;
-	width: 68px;
-	height: 3px;
-	background: #ffa800;
-	content: '';
-}
-.converter_text
-{
-	margin-top: 32px;
-}
-.converter_text p
-{
-	color: #FFFFFF;
-}
-.converter_text p:last-of-type
-{
-	margin-bottom: 0;
-}
-.converter_container
-{
-	padding-top: 182px;
-}
-.converter_container form:last-of-type
-{
-	margin-top: 19px;
-}
-.converter_input
-{
-	display: inline-block;
-	width: 84px;
-	height: 52px;
-	background: transparent;
-	color: #FFFFFF;
-	text-align: center;
-	font-size: 18px;
-	font-weight: 600;
-	outline: none;
-	vertical-align: top;
-	margin-right: 10px;
-}
-.converter_input_value
-{
-	border: solid 2px #ffa800;
-}
-.dropdown_converter
-{
-	display: inline-block;
-	-webkit-appearance:none;
-    -moz-appearance:none;
-    -ms-appearance:none;
-    -o-appearance:none;
-    appearance:none;
-	-webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-	-webkit-user-select: none;
-	width: 134px;
-	background-image: url(../images/dropdown.png);
-	background-position: center right;
-	background-repeat: no-repeat;
-	border: solid 2px #c6b5b7;
-	padding-left: 20px;
-	text-transform: uppercase;
-	vertical-align: top;
-	cursor: pointer;
-}
-.dropdown_converter:hover
-{
-	border: solid 2px #ffa800;
-}
-.converter_result
-{
-	border: solid 2px #c6b5b7;
-	width: 116px;
-}
-.dropdown_converter option
-{
-	color: #11100e;
-}
-.converter_input::-webkit-input-placeholder
-{
-	font-size: 18px !important;
-	font-weight: 600 !important;
-	color: #FFFFFF !important;
-}
-.converter_input:-moz-placeholder
-{
-	font-size: 18px !important;
-	font-weight: 600 !important;
-	color: #FFFFFF !important;
-}
-.converter_input::-moz-placeholder
-{
-	font-size: 18px !important;
-	font-weight: 600 !important;
-	color: #FFFFFF !important;
-}
-.converter_input:-ms-input-placeholder
-{
-	font-size: 18px !important;
-	font-weight: 600 !important;
-	color: #FFFFFF !important;
-}
-.converter_input::input-placeholder
-{
-	font-size: 18px !important;
-	font-weight: 600 !important;
-	color: #FFFFFF !important;
-}
-.eq
-{
-	display: inline-block;
-	width: 95px;
-	height: 52px;
-	vertical-align: top;
-	line-height: 48px;
-	font-size: 30px;
-	font-weight: 600;
-	color: #FFFFFF;
-	text-align: center;
-	margin-right: 10px;
-}
 
 /*********************************
-9. Info
+8. Info
 *********************************/
 
 .info
@@ -1305,113 +1160,6 @@ section
 	margin-bottom: 0;
 }
 
-/*********************************
-10. News
-*********************************/
-
-.news
-{
-	padding-top: 110px;
-	padding-bottom: 110px;
-	background: #FFFFFF;
-}
-.news_row
-{
-	margin-top: 103px;
-}
-.news_item
-{
-	width: 100%;
-	background: #f5f9fa;
-}
-.news_image
-{
-	width: 100%;
-}
-.news_image img
-{
-	max-width: 100%;
-}
-.news_content
-{
-	padding-top: 29px;
-	padding-left: 33px;
-	padding-right: 33px;
-	padding-bottom: 43px;
-}
-.news_title
-{
-	font-family: 'gill', sans-serif;
-	font-size: 24px;
-	color: #212121;
-}
-.news_text
-{
-	margin-top: 14px;
-}
-.news_text p:last-of-type
-{
-	margin-bottom: 0;
-}
-.news_button
-{
-	position: absolute;
-	left: 33px;
-	bottom: -21px;
-	width: 122px;
-	height: 41px;
-	background: #ffa800;
-	text-align: center;
-}
-.news_button a
-{
-	display: block;
-	position: relative;
-	font-family: 'gill', sans-serif;
-	font-size: 10px;
-	font-weight: bold;
-	color: #FFFFFF;
-	text-transform: uppercase;
-	line-height: 41px;
-	z-index: 1;
-	-webkit-transition: all 300ms ease;
-	-moz-transition: all 300ms ease;
-	-ms-transition: all 300ms ease;
-	-o-transition: all 300ms ease;
-	transition: all 300ms ease;
-}
-.news_button a::after
-{
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 50%;
-	-webkit-transform: translateX(-50%);
-	-moz-transform: translateX(-50%);
-	-ms-transform: translateX(-50%);
-	-o-transform: translateX(-50%);
-	transform: translateX(-50%);
-	width: 50%;
-	height: 100%;
-	background: #FFFFFF;
-	content: '';
-	opacity: 0;
-	-webkit-transition: all 300ms ease;
-	-moz-transition: all 300ms ease;
-	-ms-transition: all 300ms ease;
-	-o-transition: all 300ms ease;
-	transition: all 300ms ease;
-	z-index: -1;
-}
-.news_button:hover a::after
-{
-	width: 100%;
-	opacity: 1;
-}
-.news_button:hover a
-{
-	color: #ffa800;
-}
 
 /*********************************
 11. Footer

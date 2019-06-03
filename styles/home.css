@@ -311,7 +311,7 @@ section
 .home_slider_content
 {
 	position: absolute;
-	top: 28%;
+	top: 24%;
 	bottom: 1%;
 	left: 50%;
 	-webkit-transform: translateX(-50%);

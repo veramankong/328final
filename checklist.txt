@@ -1,0 +1,33 @@
+TO DO:
+
+ - make databases
+ - PDO
+ - admin page and login
+ - Ajax stuff
+ - before and after pictures on service page
+ - (bonus) API integration
+ - docblocks
+
+
+
+
+
+ Air duct cleaning is performed under negative air pressure from a gas powered vacuum. Air whip agitation is supplied through out every vent to remove harmful dust, pollen, and bacteria so the vacuum supplying pressure can safely remove the material into containment bags. Its recommended by NADCA (National Air Duct Cleaning Association) to have your vents cleaned every 4 years or as often as a home owner wishes.
+
+ -Services-
+ Air Duct Cleaning    Residential and Commercial
+ Furnace Cleaning
+ Dryer Vent Cleaning
+
+ Pricing for Residential Air Duct Cleaning
+ 1k-2k sq ft - $259 - Full service package bundle - $399*
+ 2k-3k sq ft - $299 - Full service package bundle - $459*
+ 3k-4k sq ft - $359 - Full service package bundle - $499*
+ 4k-5k sq ft - $399 - Full service package bundle - $559*
+
+ * Package deals include cleaning of all heat vents and return vents, cleaning and servicing the furnace, cleaning the dryer vent and sanitizing/deodorizing the duct work.
+
+ -Additional Services-
+ Furnace Cleaning/Service - $129
+ Dryer Vent Cleaning - $129 - $189 / $75 w/other services
+ Sanitation/Deodorizing - $75 w/other services

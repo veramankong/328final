@@ -123,27 +123,43 @@ $f3->route('GET|POST /services', function ($f3) {
                 $f3->set("error['state']", "Please select a state.");
                 $isValid = false;
             }
-
+        }
+        if (isset($_POST['type'])) {
+            $_SESSION['type'] = $type;
+        }
+        echo"($_SESSION)";
 //            print_r($_SESSION['propertyType']);
-            if ($isValid) {
+        if ($isValid) {
 // print Service ID for client
+//            $f3->reroute("/residentialservices");
 
 
 //                $f3->reroute("/reviews");
-                if ($_POST['type'] == "commercial") {
-                    $commercial = new commercialcustomer($name, $email, $phone, $state, $type);
-                    $_SESSION['propertyType'] = $commercial;
-                } else {
-                    $customer = new customer($name, $email, $phone, $state, $type);
-                    $_SESSION['propertyType'] = $customer;
-                }
+            if ($_SESSION["type"] == "Commercial") {
+
+
+//                $commercial = new commercialcustomer($name, $email, $phone, $state, $type);
+//                $_SESSION['propertyType'] = $commercial;
+//                $f3->reroute("/residentialservices");
+            } else {
+                $customer = new customer($name, $email, $phone, $state, $type);
+                $_SESSION['propertyType'] = $customer;
+                $f3->reroute("/residentialservices");
             }
         }
     }
+
     //Display summary
     $view = new Template();
     echo $view->render('views/services.html');
 
+});
+
+$f3->route('GET|POST /residentialservices', function () {
+
+    //Display summary
+    $view = new Template();
+    echo $view->render('views/residentialservices.html');
 });
 
 //Define a contact route

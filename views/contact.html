@@ -18,8 +18,7 @@
     <!-- Home -->
 
     <div class="home">
-        <div class="home_background parallax-window" data-parallax="scroll"
-             data-image-src="images/contact_background.jpg" data-speed="0.8"></div>
+        <div class="home_background parallax-window" data-parallax="scroll" data-speed="0.8"></div>
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -301,6 +300,7 @@
                                 <li><a href="services">Services</a></li>
                                 <li><a href="reviews">Reviews</a></li>
                                 <li><a href="contact">Contact</a></li>
+                                <li><a href="admin">Admin</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -310,12 +310,23 @@
     </footer>
 </div>
 
+<script>
+    var map;
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 47.2043010, lng: -122.1684670},
+            zoom: 8
+        });
+    }
+</script>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
 <script src="plugins/easing/easing.js"></script>
 <script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-ibEf4OAP-G2TabbQHp0ToQm8kk58Ot8&callback=initMap">
+</script>
 <script src="js/contact_custom.js"></script>
 </body>
 </html>

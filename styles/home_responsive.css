@@ -224,8 +224,29 @@
 
 @media only screen and (max-width: 767px)
 {
+	.home {
+		height: 12vh;
+	}
+	.intro_image img {
+		margin-top: -23px;
+		max-width: 60%;
+	}
+	.services {
+		width: 100%;
+		background: #FFFFFF;
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+	.info {
+		padding-top: 50px;
+		padding-bottom: 50px;
+		background: #f5f9fa;
+	}
+
+
 	.main_menu_social,
-	.main_menu_contact
+	.main_menu_contact,
+	.home_slider_container
 	{
 		display: none !important;
 	}

@@ -61,7 +61,8 @@ $f3->route('GET|POST /services', function ($f3) {
 
     if (!empty($_POST)) {
 
-        $name = $_POST['name'];
+        $first = $_POST['first'];
+        $last = $_POST['last'];
         $email = $_POST['email'];
         $phone = $_POST['phone'];
         $address = $_POST['address'];
@@ -70,7 +71,8 @@ $f3->route('GET|POST /services', function ($f3) {
         $type = $_POST['type'];
 
         //Add data to hive
-        $f3->set('name', $name);
+        $f3->set('first', $first);
+        $f3->set('last', $last);
         $f3->set('email', $email);
         $f3->set('phone', $phone);
         $f3->set('address', $address);
@@ -80,14 +82,20 @@ $f3->route('GET|POST /services', function ($f3) {
         $f3->set('type', $type);
 
 
-        // validate  name
-        if (validName($name)) {
-            $_SESSION['name'] = $name;
+        // validate  first name
+        if (validName($first)) {
+            $_SESSION['first'] = $first;
         } else {
-            $f3->set("errors['name']", "Please enter your name");
+            $f3->set("errors['first']", "Please enter your first name");
             $isValid = false;
         }
-
+        // validate  first name
+        if (validName($last)) {
+            $_SESSION['last'] = $last;
+        } else {
+            $f3->set("errors['last']", "Please enter your last name");
+            $isValid = false;
+        }
 
         if (!empty($email)) {
             $_SESSION['email'] = $email;

@@ -142,13 +142,27 @@ $f3->route('GET|POST /services', function ($f3) {
             if (!empty($type) && $_POST['type'] === "Commercial") {
 
                 $commercial = new commercialcustomer($first, $last, $email, $phone, $state, $type);
+                if(isset($_POST['address'])) {
+                    $commercial->setAddress($address);
+                }
+                if(isset($_POST['zip'])) {
+                    $commercial->setZip($zip);
+                }
                 $_SESSION['propertyType'] = $commercial;
-
+                var_dump($_SESSION['propertyType']);
 
                 $f3->reroute("/commercialservices");
             } else {
                 $customer = new customer($first, $last, $email, $phone, $state, $type);
+                if(isset($_POST['address'])) {
+                    $customer->setAddress($address);
+                }
+                if(isset($_POST['zip'])) {
+                    $customer->setZip($zip);
+                }
                 $_SESSION['propertyType'] = $customer;
+                var_dump($_SESSION['propertyType']);
+
 
                 print_r($customer);
                 $f3->reroute("/residentialservices");
@@ -164,6 +178,9 @@ $f3->route('GET|POST /services', function ($f3) {
 
 // residential services
 $f3->route('GET|POST /residentialservices', function () {
+    var_dump($_SESSION['propertyType']);
+    return;
+
 
     //Display summary
     $view = new Template();
@@ -172,6 +189,9 @@ $f3->route('GET|POST /residentialservices', function () {
 
 
 $f3->route('GET|POST /commercialservices', function () {
+    var_dump($_SESSION['propertyType']);
+    return;
+
 
     //Display summary
     $view = new Template();

@@ -18,8 +18,8 @@ type varchar(20),
 services VARCHAR(500)
 );
  */
-require "/home2/sjawandh/config-student.php";
-
+$user = $_SERVER['USER'];
+require "/home/$user/config.php";
 
 /**
  * database Class is for a database for customers

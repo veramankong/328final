@@ -127,23 +127,19 @@ $f3->route('GET|POST /services', function ($f3) {
         if (isset($_POST['type'])) {
             $_SESSION['type'] = $type;
         }
-        echo"($_SESSION)";
 //            print_r($_SESSION['propertyType']);
         if ($isValid) {
 // print Service ID for client
-//            $f3->reroute("/residentialservices");
 
-
-//                $f3->reroute("/reviews");
             if ($_SESSION["type"] == "Commercial") {
 
 
 //                $commercial = new commercialcustomer($name, $email, $phone, $state, $type);
 //                $_SESSION['propertyType'] = $commercial;
-//                $f3->reroute("/residentialservices");
+                $f3->reroute("/commercialservices");
             } else {
-                $customer = new customer($name, $email, $phone, $state, $type);
-                $_SESSION['propertyType'] = $customer;
+//                $customer = new customer($name, $email, $phone, $state, $type);
+//                $_SESSION['propertyType'] = $customer;
                 $f3->reroute("/residentialservices");
             }
         }
@@ -155,11 +151,20 @@ $f3->route('GET|POST /services', function ($f3) {
 
 });
 
+// residential services
 $f3->route('GET|POST /residentialservices', function () {
 
     //Display summary
     $view = new Template();
     echo $view->render('views/residentialservices.html');
+});
+
+
+$f3->route('GET|POST /commercialservices', function () {
+
+    //Display summary
+    $view = new Template();
+    echo $view->render('views/commercialservices.html');
 });
 
 //Define a contact route

@@ -195,13 +195,21 @@
                     <div class="contact_form_container">
                         <form action="#" method="post" class="contact_form">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <!-- validation error message -->
-                                    <check if="{{ isset(@errors['name']) }}">
-                                        <span class="err">{{ @errors['name'] }}</span>
+                                    <check if="{{ isset(@errors['firstname']) }}">
+                                        <span class="err">{{ @errors['firstname'] }}</span>
                                     </check>
-                                    <input type="text" class="input_item" placeholder="Your Name"
-                                           name="name" required="required" value="{{ @POST['name']}}">
+                                    <input type="text" class="input_item" placeholder="First Name"
+                                           name="firstname" required="required" value="{{ @POST['firstname']}}">
+                                </div>
+                                <div class="col-md-6">
+                                    <!-- validation error message -->
+                                    <check if="{{ isset(@errors['lastname']) }}">
+                                        <span class="err">{{ @errors['lastname'] }}</span>
+                                    </check>
+                                    <input type="text" class="input_item" placeholder="Last Name"
+                                           name="lastname" required="required" value="{{ @POST['lastname']}}">
                                 </div>
                                 <div class="col-md-6">
                                     <!-- validation error message -->
@@ -216,12 +224,12 @@
                                     <check if="{{ isset(@errors['phone']) }}">
                                         <span class="err">{{ @errors['phone'] }}</span>
                                     </check>
-                                    <input type="text" class="input_item" name="phone" value="{{ @POST['phone']}}"
+                                    <input type="text" class="input_item" name="phone" required="required" value="{{ @POST['phone']}}"
                                            placeholder="Your Phone">
                                 </div>
 
 
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <!-- validation error message -->
                                     <check if="{{ isset(@errors['message']) }}">
                                         <span class="err">{{ @errors['message'] }}</span>

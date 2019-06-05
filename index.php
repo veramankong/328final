@@ -191,25 +191,33 @@ $f3->route('GET|POST /contact', function ($f3) {
 
     if (!empty($_POST)) {
 
-        $name = $_POST['name'];
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
         $email = $_POST['email'];
         $phone = $_POST['phone'];
         $message = $_POST['message'];
 
         //Add data to hive
-        $f3->set('name', $name);
+        $f3->set('firstname', $firstname);
+        $f3->set('lastname', $lastname);
         $f3->set('email', $email);
         $f3->set('phone', $phone);
         $f3->set('message', $message);
 
-        // validate  name
-        if (validName($name)) {
-            $_SESSION['name'] = $name;
+        // validate  first name
+        if (validName($firstname)) {
+            $_SESSION['firstname'] = $firstname;
         } else {
-            $f3->set("errors['name']", "Please enter your name");
+            $f3->set("errors['first']", "Please enter your first name");
             $isValid = false;
         }
-
+        // validate  first name
+        if (validName($lastname)) {
+            $_SESSION['last'] = $lastname;
+        } else {
+            $f3->set("errors['last']", "Please enter your last name");
+            $isValid = false;
+        }
 
         if (!empty($email)) {
             $_SESSION['email'] = $email;

@@ -233,5 +233,19 @@ $f3->route('GET|POST /contact', function ($f3) {
     echo $view->render('views/contact.html');
 });
 
+//admin route
+$f3->route('GET|POST /admin', function ($f3) {
+
+//    global $db;
+//    $db->connect();
+//    $members = $db->getMembers();
+//    //set members and db for use in admin
+//    $f3->set('members', $members);
+//    $f3->set('db', $db);
+    //display a view
+    $view = new Template();
+    echo $view->render('views/admin.html');
+});
+
 //Run Fat-Free
 $f3->run();

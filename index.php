@@ -135,19 +135,22 @@ $f3->route('GET|POST /services', function ($f3) {
         if (isset($_POST['type'])) {
             $_SESSION['type'] = $type;
         }
-//            print_r($_SESSION['propertyType']);
+//            print_r($_SESION['propertyType']);
         if ($isValid) {
 // print Service ID for client
 
-            if ($_SESSION["type"] == "Commercial") {
+            if (!empty($type) && $_POST['type'] === "Commercial") {
+
+                $commercial = new commercialcustomer($first, $last, $email, $phone, $state, $type);
+                $_SESSION['propertyType'] = $commercial;
 
 
-//                $commercial = new commercialcustomer($name, $email, $phone, $state, $type);
-//                $_SESSION['propertyType'] = $commercial;
                 $f3->reroute("/commercialservices");
             } else {
-//                $customer = new customer($name, $email, $phone, $state, $type);
-//                $_SESSION['propertyType'] = $customer;
+                $customer = new customer($first, $last, $email, $phone, $state, $type);
+                $_SESSION['propertyType'] = $customer;
+
+                print_r($customer);
                 $f3->reroute("/residentialservices");
             }
         }

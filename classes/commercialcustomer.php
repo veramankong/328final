@@ -15,10 +15,10 @@ class commercialcustomer extends customer
 //    private $_services = array();
 
 
-    function __construct($name, $email, $phone, $state, $type)
+    function __construct($first,$last, $email, $phone, $state, $type)
     {
         // parent constructor call
-        parent::__construct($name, $phone, $email, $state, $type);
+        parent::__construct($first,$last, $phone, $email, $state, $type);
     }
 
     public function getServices()

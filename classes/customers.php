@@ -10,7 +10,8 @@
 
 class customer
 {
-    private $name;
+    private $_first;
+    private $_last;
     private $_email;
     private $_phone;
     private $_address;
@@ -20,9 +21,10 @@ class customer
 
 
     // Define parameterized constructor
-    function __construct($name, $email, $phone, $state, $type)
+    function __construct($first,$last, $email, $phone, $state, $type)
     {
-        $this->_name = $name;
+        $this->_first = $first;
+        $this->_last = $last;
         $this->_phone = $phone;
         $this->_email = $email;
         $this->_state = $state;
@@ -30,22 +32,42 @@ class customer
     }
 
     /**
-     * Get  name of the customer
-     * @return String $name
+     * Get  first name of the customer
+     * @return String $first
      */
-    public function getName()
+    public function getFirst()
     {
-        return $this->_name;
+        return $this->_first;
+    }
+
+
+    /**
+     * Set the  first name of customer
+     * @param String $first first name of member
+     * @return void
+     */
+    public function setFirst($first)
+    {
+        $this->_first = $first;
     }
 
     /**
-     * Set the  name of customer
-     * @param $name name of member
+     * Get  last name of the customer
+     * @return String $last
+     */
+    public function getLast()
+    {
+        return $this->_last;
+    }
+
+    /**
+     * Set the  last name of customer
+     * @param String $last last name of member
      * @return void
      */
-    public function setName($name)
+    public function setLast($last)
     {
-        $this->_name = $name;
+        $this->_last = $last;
     }
 
     /**

@@ -21,7 +21,7 @@
 	<!-- Home -->
 
 	<div class="home">
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/services_background.jpg" data-speed="0.8"></div>
+		<div class="home_background parallax-window" data-parallax="scroll"  data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -63,7 +63,10 @@
 
 									<div class="main_menu_social">
 										<ul>
+											<li><a href="mailto:westcoastpowervac@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
 											<li><a href="https://www.facebook.com/WestCoastPowerVac"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+											<li><a href="https://www.yelp.com/biz/west-coast-power-vac-bonney-lake?osq=west+coast+power+vac"><i class="fa fa-yelp" aria-hidden="true"></i></a></li>
+											<li><a href="https://www.thumbtack.com/wa/bonney-lake/ducts-and-vents/air-duct-dryer-vent-furnace-cleaning-more?fbclid=IwAR1yggRZHepT010vcEtfjwSXVuWPfkbHnoa1XjUATjBJ6QSINDzw2JoRcKc"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a></li>
 										</ul>
 									</div>
 								</div>
@@ -199,6 +202,10 @@
 				<div class="container">
 					<span class="yelp-review" data-review-id="zibpaX0T8V1SIi_K6dUiWQ" data-hostname="www.yelp.com">Read <a href="https://www.yelp.com/user_details?userid=pvcKO58hYlbeRVwLU4kT3g" rel="nofollow noopener">Jac H.</a>'s <a href="https://www.yelp.com/biz/west-coast-power-vac-bonney-lake?hrid=zibpaX0T8V1SIi_K6dUiWQ" rel="nofollow noopener">review</a> of <a href="https://www.yelp.com/biz/Jf_3lk-sLhyceZ5SI1hv9A" rel="nofollow noopener">West Coast Power-Vac</a> on <a href="https://www.yelp.com" rel="nofollow noopener">Yelp</a><script async="async" src="https://www.yelp.com/embed/widgets.js" type="text/javascript"></script></span>
 				</div>
+				<br><br>
+				<div class="container">
+					<span class="yelp-review" data-review-id="zibpaX0T8V1SIi_K6dUiWQ" data-hostname="www.yelp.com">Read <a href="https://www.yelp.com/user_details?userid=pvcKO58hYlbeRVwLU4kT3g" rel="nofollow noopener">Jac H.</a>'s <a href="https://www.yelp.com/biz/west-coast-power-vac-bonney-lake?hrid=zibpaX0T8V1SIi_K6dUiWQ" rel="nofollow noopener">review</a> of <a href="https://www.yelp.com/biz/Jf_3lk-sLhyceZ5SI1hv9A" rel="nofollow noopener">West Coast Power-Vac</a> on <a href="https://www.yelp.com" rel="nofollow noopener">Yelp</a><script async="async" src="https://www.yelp.com/embed/widgets.js" type="text/javascript"></script></span>
+				</div>
 			</div>
 
 
@@ -210,36 +217,70 @@
 	<!-- Call Back -->
 
 	<div class="call">
-		<div class="container">
+		<div class="container shadow-lg">
 			<div class="row">
-				<div class="col-lg-4">
-				</div>
 				<div class="col-lg-8">
 					<div class="call_container">
 						<div class="section_title_container">
 							<div class="section_title">Request a Call Back Today!</div>
 						</div>
 						<div class="call_form_container">
-							<form action="#" class="call_form">
+							<!--for validation -->
+							<form action="#" method="post" class="call_form">
 								<div class="row">
 									<div class="col-md-6">
-										<input type="text" class="input_item" placeholder="Your Name" required="required">
+										<!-- validation error message -->
+										<check if="{{ isset(@errors['first']) }}">
+											<span class="err">{{ @errors['first'] }}</span>
+										</check>
+										<input type="text" class="input_item" placeholder="First Name"
+											   name="first" required="required" value="{{ @POST['first']}}">
 									</div>
 									<div class="col-md-6">
-										<input type="email" class="input_item" placeholder="Your E-mail" required="required">
+										<!-- validation error message -->
+										<check if="{{ isset(@errors['last']) }}">
+											<span class="err">{{ @errors['last'] }}</span>
+										</check>
+										<input type="text" class="input_item" placeholder="Last Name"
+											   name="last" required="required" value="{{ @POST['last']}}">
 									</div>
 									<div class="col-md-6">
-										<input type="text" class="input_item" placeholder="Your Phone">
+										<!-- validation error message -->
+										<check if="{{ isset(@errors['email']) }}">
+											<span class="err">{{ @errors['email'] }}</span>
+										</check>
+										<input type="email" class="input_item" placeholder="E-mail"
+											   name="email" value="{{ @POST['email']}}" required="required">
 									</div>
 									<div class="col-md-6">
-										<select class="dropdown_item input_item">
-											<option>Business type</option>
-											<option>Business type</option>
-											<option>Business type</option>
+										<!-- validation error message -->
+										<check if="{{ isset(@errors['phone']) }}">
+											<span class="err">{{ @errors['phone'] }}</span>
+										</check>
+										<input type="text" class="input_item" name="phone" value="{{ @POST['phone']}}"
+											   placeholder="Phone Number">
+									</div>
+
+
+									<div class="col-md-6">
+										<!-- validation error message -->
+										<check if="{{ isset(@errors['type']) }}">
+											<span class="err">{{ @errors['type'] }}</span>
+										</check>
+										<select class="dropdown-item input_item" name="type">
+											<repeat group="{{ @types }}" value="{{ @typeOption }}">
+												<option
+												<check if="{{@typeOption == @$_SESSION['type'] }}">selected</check>
+												>
+												{{ @typeOption}}
+												</option>
+											</repeat>
 										</select>
 									</div>
 									<div class="col-md-12">
-										<button id="call_btn" type="submit" class="call_button trans_200" value="Submit">submit</button>
+										<button id="call_btn" type="submit" class="call_button trans_200"
+												value="Submit">submit
+										</button>
 									</div>
 								</div>
 							</form>
@@ -258,9 +299,16 @@
 				<div class="row">
 					<div class="col-md-4 order-md-1 order-2">
 						<div class="copyright_content d-flex flex-row align-items-center justify-content-start">
-							<div class="cr"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-								Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+							<div class="cr">
+								<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+								Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+								All rights reserved | West Coast Power-Vac
+
+								<!--This template is made with <i class="fa fa-heart-o"
+                                                                                    aria-hidden="true"></i> by <a
+                                    href="https://colorlib.com" target="_blank">Colorlib</a>
+                                 Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							</div>
 						</div>
 					</div>
 					<div class="col-md-8 order-md-2 order-1">

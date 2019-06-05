@@ -22,7 +22,7 @@
 
     <div class="home">
         <div class="home_background parallax-window" data-parallax="scroll"
-             data-image-src="images/services_background.jpg" data-speed="0.8"></div>
+             data-speed="0.8"></div>
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -64,7 +64,10 @@
 
                                     <div class="main_menu_social">
                                         <ul>
+                                            <li><a href="mailto:westcoastpowervac@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
                                             <li><a href="https://www.facebook.com/WestCoastPowerVac"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                            <li><a href="https://www.yelp.com/biz/west-coast-power-vac-bonney-lake?osq=west+coast+power+vac"><i class="fa fa-yelp" aria-hidden="true"></i></a></li>
+                                            <li><a href="https://www.thumbtack.com/wa/bonney-lake/ducts-and-vents/air-duct-dryer-vent-furnace-cleaning-more?fbclid=IwAR1yggRZHepT010vcEtfjwSXVuWPfkbHnoa1XjUATjBJ6QSINDzw2JoRcKc"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -253,7 +256,7 @@
 
     <div class="services">
         <div class="services_background parallax-window" data-parallax="scroll"
-             data-image-src="images/services_background_2.jpg" data-speed="0.8"></div>
+              data-speed="0.8"></div>
         <div class="container">
             <h1 class="text-center">Additional Services</h1>
             <hr>
@@ -263,7 +266,6 @@
                     <div class="service text-center">
                         <div class="service_icon"><img src="images/service_1.svg" class="svg" alt=""></div>
                         <div class="service_title">Furnace Cleaning/Service</div>
-
                         <div class="service_text">
                             <p><strong>Price -</strong> $129</p>
                         </div>
@@ -273,8 +275,8 @@
                     <div class="service text-center">
                         <div class="service_icon"><img src="images/service_3.svg" class="svg" alt=""></div>
                         <div class="service_title">Sanitation/Deodorizing</div>
-                        <div class="service_text">
-                            <p><strong>Price -</strong> $75 w/other services</p>
+                        <div class="service_text text-center">
+                            <p><strong>Price -</strong> $75 w/other services</p><br><br>
                         </div>
                     </div>
 
@@ -318,18 +320,26 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <!-- validation error message -->
-                                        <check if="{{ isset(@errors['name']) }}">
-                                            <span class="err">{{ @errors['name'] }}</span>
+                                        <check if="{{ isset(@errors['first']) }}">
+                                            <span class="err">{{ @errors['first'] }}</span>
                                         </check>
-                                        <input type="text" class="input_item" placeholder="Your Name"
-                                               name="name" required="required" value="{{ @POST['name']}}">
+                                        <input type="text" class="input_item" placeholder="First Name"
+                                               name="first" required="required" value="{{ @POST['first']}}">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- validation error message -->
+                                        <check if="{{ isset(@errors['last']) }}">
+                                            <span class="err">{{ @errors['last'] }}</span>
+                                        </check>
+                                        <input type="text" class="input_item" placeholder="Last Name"
+                                               name="last" required="required" value="{{ @POST['last']}}">
                                     </div>
                                     <div class="col-md-6">
                                         <!-- validation error message -->
                                         <check if="{{ isset(@errors['email']) }}">
                                             <span class="err">{{ @errors['email'] }}</span>
                                         </check>
-                                        <input type="email" class="input_item" placeholder="Your E-mail"
+                                        <input type="email" class="input_item" placeholder="E-mail"
                                                name="email" value="{{ @POST['email']}}" required="required">
                                     </div>
                                     <div class="col-md-6">
@@ -338,7 +348,7 @@
                                             <span class="err">{{ @errors['phone'] }}</span>
                                         </check>
                                         <input type="text" class="input_item" name="phone" value="{{ @POST['phone']}}"
-                                               placeholder="Your Phone">
+                                               placeholder="Phone Number">
                                     </div>
                                     <div class="col-md-6">
 
@@ -409,10 +419,12 @@
                             <div class="cr">
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                                All rights reserved | This template is made with <i class="fa fa-heart-o"
+                                All rights reserved | West Coast Power-Vac
+
+                                <!--This template is made with <i class="fa fa-heart-o"
                                                                                     aria-hidden="true"></i> by <a
                                     href="https://colorlib.com" target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                 Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </div>
                         </div>
                     </div>

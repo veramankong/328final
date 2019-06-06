@@ -326,7 +326,7 @@
                             <form action="#" method="post" class="call_form">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input type="text" class="input_item" id = "customerid" name="customerid"
+                                        <input type="text" class="input_item" id = "idinput" name="idinput"
                                                value=" Your customer ID is : {{ @customerId}}" readonly>
                                     </div>
 
@@ -461,7 +461,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <!--<script src="js/estimateid.js"></script>-->
 <script>
-    $("#show").on("click", function () {
+    $("#show").on("mouseover", function () {
         var estimate = $("#estimate").val();
         // alert(estimate);
         // display the id in div
@@ -471,6 +471,21 @@
             {pid: estimate},
             function (result) {
                 $("#detail").html(result);
+            }
+        )
+    });
+
+    $("body").on("mouseover", function () {
+        // var id = $("#idinput").val();
+
+        // alert(estimate);
+        // display the id in div
+        // $("#detail").html(estimate);
+        $.post(
+            "model/id.php",
+            // {pid: id},
+            function (result) {
+                $("#idinput").val(result);
             }
         )
     });

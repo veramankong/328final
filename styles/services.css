@@ -26,6 +26,11 @@
 	background-color: black;
 }
 
+
+.err
+{
+    color:darkred;
+}
 /***********
 1. Fonts
 ***********/

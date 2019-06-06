@@ -9,12 +9,13 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-//Database config
-$user = $_SERVER['USER'];
-//require "/home/$user/config.php";
 
 //Required file
 require_once('vendor/autoload.php');
+require_once('model/database.php');
+
+$db = new Database();
+
 
 session_start();
 //validate form
@@ -56,6 +57,7 @@ $f3->route('GET /about', function () {
 //Define a services route
 $f3->route('GET|POST /services', function ($f3) {
 
+    global $db;
     $_SESSION = array();
     $isValid = true;
 
@@ -97,6 +99,7 @@ $f3->route('GET|POST /services', function ($f3) {
             $isValid = false;
         }
 
+
         if (!empty($email)) {
             $_SESSION['email'] = $email;
 
@@ -135,40 +138,39 @@ $f3->route('GET|POST /services', function ($f3) {
         if (isset($_POST['type'])) {
             $_SESSION['type'] = $type;
         }
-//            print_r($_SESION['propertyType']);
         if ($isValid) {
-// print Service ID for client
 
             if (!empty($type) && $_POST['type'] === "Commercial") {
 
+                $commercialServices = "1k-2k sq ft - $559 - Full service package bundle - $899* 2k-3k sq ft - $699 - Full service package bundle - $959*  3k-4k sq ft - $759 - Full service package bundle - $1099* 4k-5k sq ft - $799 - Full service package bundle - $1159* 5k-10k sq ft - $1099 - Full service package bundle - $1759* 10k - above sq ft - $1499 - Full service package bundle - $2059";
+
                 $commercial = new commercialcustomer($first, $last, $email, $phone, $state, $type);
-                if(isset($_POST['address'])) {
+                if (isset($_POST['address'])) {
                     $commercial->setAddress($address);
                 }
-                if(isset($_POST['zip'])) {
+                if (isset($_POST['zip'])) {
                     $commercial->setZip($zip);
                 }
                 $_SESSION['propertyType'] = $commercial;
-                var_dump($_SESSION['propertyType']);
 
+//                $db->insertCustomer($first,$last,$phone,$email,$address,$state,$zip,$type,$commercialServices);
                 $f3->reroute("/commercialservices");
             } else {
                 $customer = new customer($first, $last, $email, $phone, $state, $type);
-                if(isset($_POST['address'])) {
+                if (isset($_POST['address'])) {
                     $customer->setAddress($address);
                 }
-                if(isset($_POST['zip'])) {
+                if (isset($_POST['zip'])) {
                     $customer->setZip($zip);
                 }
                 $_SESSION['propertyType'] = $customer;
-                var_dump($_SESSION['propertyType']);
 
 
-                print_r($customer);
                 $f3->reroute("/residentialservices");
             }
         }
     }
+
 
     //Display summary
     $view = new Template();
@@ -178,8 +180,7 @@ $f3->route('GET|POST /services', function ($f3) {
 
 // residential services
 $f3->route('GET|POST /residentialservices', function () {
-    var_dump($_SESSION['propertyType']);
-    return;
+//    var_dump($_SESSION['propertyType']);
 
 
     //Display summary
@@ -189,8 +190,8 @@ $f3->route('GET|POST /residentialservices', function () {
 
 
 $f3->route('GET|POST /commercialservices', function () {
-    var_dump($_SESSION['propertyType']);
-    return;
+//    var_dump($_SESSION['propertyType']);
+//    return;
 
 
     //Display summary

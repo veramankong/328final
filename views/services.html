@@ -296,13 +296,14 @@
                             <p>$75 w/other services</p>
                         </div>
                     </div>
-
-                    <label>Enter a Service Estimate ID:
-                        <input type="text" id="estimate" class="input_item" placeholder="Service ID"
-                               name="estimate">
-                        <button id='show' class="call_button">Lookup</button>
-                        <div id="detail"></div>
-                    </label>
+                    <div>
+                        <label>Enter a Service Estimate ID:
+                            <input type="text" id="estimate" class="input_item" placeholder="Service ID"
+                                   name="estimate">
+                            <button id='show' class="call_button">Lookup</button>
+                            <div id="detail"></div>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -326,7 +327,7 @@
                             <form action="#" method="post" class="call_form">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <input type="text" class="input_item text-center" id = "idinput" name="idinput"
+                                        <input type="text" class="input_item text-center" id="idinput" name="idinput"
                                                value=" Your customer ID is : {{ @customerId}}" readonly>
                                     </div>
 
@@ -461,21 +462,27 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <!--<script src="js/estimateid.js"></script>-->
 <script>
-    $("#show").on("mouseover", function () {
+    $("#show").on("click", function () {
+        // $("#detail").html("Enter a Service Estimate id.");
         var estimate = $("#estimate").val();
-        // alert(estimate);
-        // display the id in div
-        // $("#detail").html(estimate);
-        $.post(
-            "model/lookup.php",
-            {pid: estimate},
-            function (result) {
-                $("#detail").html(result);
-            }
-        )
+        if (estimate === "") {
+            $("#detail").html("Enter a Service Estimate id.");
+        }
+        else {
+            // alert(estimate);
+            // display the id in div
+            // $("#detail").html(estimate);
+            $.post(
+                "model/lookup.php",
+                {pid: estimate},
+                function (result) {
+                    $("#detail").html(result);
+                }
+            )
+        }
     });
 
-    $("body").on("mouseover", function () {
+    $("form").on("mouseover", function () {
         // var id = $("#idinput").val();
 
         // alert(estimate);
@@ -483,7 +490,6 @@
         // $("#detail").html(estimate);
         $.post(
             "model/id.php",
-            // {pid: id},
             function (result) {
                 $("#idinput").val(result);
             }

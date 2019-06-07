@@ -123,6 +123,17 @@
             <!-- Menu -->
 
             <div class="menu">
+                <div class="menu_register_login">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="menu_register_login_content d-flex flex-row align-items-center justify-content-end">
+                                    <div class="login"><a href="admin">admin</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <ul class="menu_list">
                     <li class="menu_item">
                         <div class="container">
@@ -218,6 +229,14 @@
                                            name="lastname" required="required" value="{{ @POST['lastname']}}">
                                 </div>
                                 <div class="col-md-6">
+                                <!-- validation error message -->
+                                <check if="{{ isset(@errors['phone']) }}">
+                                    <span class="err">{{ @errors['phone'] }}</span>
+                                </check>
+                                <input type="text" class="input_item" name="phone" required="required" value="{{ @POST['phone']}}"
+                                       placeholder="Your Phone">
+                                </div>
+                                <div class="col-md-6">
                                     <!-- validation error message -->
                                     <check if="{{ isset(@errors['email']) }}">
                                         <span class="err">{{ @errors['email'] }}</span>
@@ -225,16 +244,6 @@
                                     <input type="email" class="input_item" placeholder="Your E-mail"
                                            name="email" value="{{ @POST['email']}}" required="required">
                                 </div>
-                                <div class="col-md-6">
-                                    <!-- validation error message -->
-                                    <check if="{{ isset(@errors['phone']) }}">
-                                        <span class="err">{{ @errors['phone'] }}</span>
-                                    </check>
-                                    <input type="text" class="input_item" name="phone" required="required" value="{{ @POST['phone']}}"
-                                           placeholder="Your Phone">
-                                </div>
-
-
                                 <div class="col-md-12">
                                     <!-- validation error message -->
                                     <check if="{{ isset(@errors['message']) }}">
@@ -330,7 +339,7 @@
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 47.2043010, lng: -122.1684670},
-            zoom: 8
+            zoom: 10
         });
     }
 </script>
@@ -340,8 +349,11 @@
 <script src="plugins/easing/easing.js"></script>
 <script src="plugins/parallax-js-master/parallax.min.js"></script>
 <script async defer
+
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-ibEf4OAP-G2TabbQHp0ToQm8kk58Ot8&callback=initMap">
 </script>
 <script src="js/contact_custom.js"></script>
 </body>
 </html>
+
+<!--        AIzaSyD0BipDEVipd6IDq51lRdtG3lmiJoirI9g-->

@@ -2,16 +2,26 @@
  * Name: Sukhveer S Jawandha & Vera Mankongvanichkul
  * 06/05/2019
  * 328/328final/views/admin.html
- * This file represent as admin page for website.
+ * This file represent as home page for website.
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Admin</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Invest project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- CSS Styles -->
     <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
     <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
@@ -19,6 +29,9 @@
     <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
     <link rel="stylesheet" type="text/css" href="styles/admin.css">
     <link rel="stylesheet" type="text/css" href="styles/admin_responsive.css">
+
+    <title>Admin</title>
+
 </head>
 <body>
 
@@ -27,25 +40,102 @@
     <!-- Home -->
 
     <div class="home">
-        <div class="home_background parallax-window" data-parallax="scroll"
-              data-speed="0.8"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="home_content">
-                        <div class="home_content_inner">
-                            <div class="home_title">Admin</div>
-                            <div class="home_breadcrumbs">
-                                <ul>
-                                    <li><a href="home">Home</a></li>
-                                    <li>Admin</li>
-                                </ul>
-                            </div>
-                        </div>
+        <div class="home_slider_container">
+
+            <!-- Home Slider -->
+        <div class="ctable">
+<!--            <h1>Customers</h1>-->
+<!--            <table class="table customer">-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    <th scope="col">Customer ID</th>-->
+<!--                    <th scope="col">Name</th>-->
+<!--                    &lt;!&ndash;            <th scope="col">Last Name</th>&ndash;&gt;-->
+<!--                    <th scope="col">Phone</th>-->
+<!--                    <th scope="col">Email</th>-->
+<!--                    <th scope="col">Address</th>-->
+<!--                    <th scope="col">State</th>-->
+<!--                    <th scope="col">Zip</th>-->
+<!--                    <th scope="col">Type</th>-->
+<!--                    <th scope="col">Services</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <repeat group="{{ @customers }}" value="{{ @customer }}">-->
+<!--                    <tr>-->
+<!--                        <th scope="row">{{ @customer['customer_id'] }}</th>-->
+<!--                        <td>{{ @customer['fname'] }} {{ @customer['lname'] }}</td>-->
+<!--                        <td>{{ @customer['phone'] }}</td>-->
+<!--                        <td>{{ @customer['email'] }}</td>-->
+<!--                        <td>{{ @customer['address'] }}</td>-->
+<!--                        <td>{{ @customer['state'] }}</td>-->
+<!--                        <td>{{ @customer['zip'] }}</td>-->
+<!--                        <td>{{ @customer['type'] }}</td>-->
+<!--                        <td>{{ @customer['services'] }}</td>-->
+<!--                    </tr>-->
+<!--                </repeat>-->
+<!--                </tbody>-->
+<!--            </table>-->
+<!--            <br><br>-->
+            <!-- Editable table -->
+            <div class="card">
+                <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Customer Table</h3>
+                <div class="card-body">
+                    <div id="table" class="table-editable">
+                        <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
+                             class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
+                        <table class="table table-bordered table-responsive-md table-striped text-center">
+                            <thead>
+                            <tr>
+                                <th class="text-center">Customer ID</th>
+                                <th class="text-center">Name</th>
+                                <th class="text-center">Phone</th>
+                                <th class="text-center">Email</th>
+                                <th class="text-center">Address</th>
+                                <th class="text-center">State</th>
+                                <th class="text-center">Zip</th>
+                                <th class="text-center">Type</th>
+<!--                                <th class="text-center">Services</th>-->
+                                <th class="text-center">Sort</th>
+                                <th class="text-center">Remove</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <repeat group="{{ @customers }}" value="{{ @customer }}">
+                                <tr>
+                                    <th scope="row">{{ @customer['customer_id'] }}</th>
+                                    <td class="pt-3-half" contenteditable="true">{{ @customer['fname'] }} {{ @customer['lname'] }}</td>
+                                    <td class="pt-3-half" contenteditable="true">{{ @customer['phone'] }}</td>
+                                    <td class="pt-3-half" contenteditable="true">{{ @customer['email'] }}</td>
+                                    <td class="pt-3-half" contenteditable="true">{{ @customer['address'] }}</td>
+                                    <td class="pt-3-half" contenteditable="true">{{ @customer['state'] }}</td>
+                                    <td class="pt-3-half" contenteditable="true">{{ @customer['zip'] }}</td>
+                                    <td class="pt-3-half" contenteditable="true">{{ @customer['type'] }}</td>
+<!--                                    <td class="pt-3-half" contenteditable="true">{{ @customer['services'] }}</td>-->
+                                    <td class="pt-3-half">
+                                    <span class="table-up"><a href="#!" class="indigo-text"><i
+                                            class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>
+                                        <span class="table-down"><a href="#!" class="indigo-text"><i
+                                                class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
+                                    </td>
+                                    <td>
+                                        <span class="table-remove"><button type="button"
+                                           class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
+                                    </td>
+                                </tr>
+                            </repeat>
+                            </tbody>
+                            <tbody>
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
+            <!-- Editable table -->
+
         </div>
+    </div>
 
         <!-- Header -->
 
@@ -60,14 +150,13 @@
                                 <div class="logo_container">
                                     <div class="logo">
                                         <a href="home">
-                                            <div class="logo_line_1"><span>west coast</span>power-vac</div>
-                                            <div class="logo_line_2 ">Residential & Commercial Duct Cleaning</div>
+                                            <div class="logo_line_1 shadow-lg"><span>west coast</span>power-vac</div>
+                                            <div class="logo_line_2">Residential & Commercial Duct Cleaning</div>
                                             <div class="logo_img"><img src="images/tornado.jpg" alt=""></div>
                                         </a>
                                     </div>
                                 </div>
                                 <div class="top_bar_content ml-auto">
-
                                     <div class="main_menu_social">
                                         <ul>
                                             <li><a href="mailto:westcoastpowervac@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
@@ -87,7 +176,6 @@
             </div>
 
             <!-- Main Menu -->
-
             <div class="main_menu">
                 <div class="container">
                     <div class="row">
@@ -124,7 +212,6 @@
                 </div>
             </div>
 
-
             <!-- Menu -->
 
             <div class="menu">
@@ -133,7 +220,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="menu_register_login_content d-flex flex-row align-items-center justify-content-end">
-                                    <div class="login"><a href="#">login</a></div>
+                                    <div class="login"><a href="admin">admin</a></div>
                                 </div>
                             </div>
                         </div>
@@ -191,36 +278,12 @@
         </header>
     </div>
 
+    <!-- Intro -->
 
-    <!-- Services -->
+    <div class="intro">
 
-    <div class="services">
-        <div class="services_background parallax-window" data-parallax="scroll"
-              data-speed="0.8"></div>
-        <div class="container">
-            <h1 class="text-center">Customer Estimate Data</h1>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Customer ID</th>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>Email</th>
-                    <th>State</th>
-                    <th>Property Type</th>
-                </tr>
-                </thead>
-                <tbody>
-                <repeat group="{{ @members }}" value="{{ @member }}">
-                    <tr>
-
-
-                    </tr>
-                </repeat>
-                </tbody>
-            </table>
-        </div>
     </div>
+
 </div>
 
 <!-- Footer -->
@@ -251,6 +314,7 @@
                             <li><a href="services">Services</a></li>
                             <li><a href="reviews">Reviews</a></li>
                             <li><a href="contact">Contact</a></li>
+                            <li><a href="admin">Admin</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -260,17 +324,110 @@
 </footer>
 </div>
 
+<script>
+    const $tableID = $('#table');
+    const $BTN = $('#export-btn');
+    const $EXPORT = $('#export');
+
+    const newTr = `
+ <tr class="hide">
+   <td class="pt-3-half" contenteditable="true">Example</td>
+   <td class="pt-3-half" contenteditable="true">Example</td>
+   <td class="pt-3-half" contenteditable="true">Example</td>
+   <td class="pt-3-half" contenteditable="true">Example</td>
+   <td class="pt-3-half" contenteditable="true">Example</td>
+   <td class="pt-3-half">
+     <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>
+     <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
+   </td>
+   <td>
+     <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Remove</button></span>
+   </td>
+ </tr>`;
+
+    $('.table-add').on('click', 'i', () => {
+
+        const $clone = $tableID.find('tbody tr').last().clone(true).removeClass('hide table-line');
+
+        if ($tableID.find('tbody tr').length === 0) {
+
+            $('tbody').append(newTr);
+        }
+
+        $tableID.find('table').append($clone);
+    });
+
+    $tableID.on('click', '.table-remove', function () {
+
+        $(this).parents('tr').detach();
+    });
+
+    $tableID.on('click', '.table-up', function () {
+
+        const $row = $(this).parents('tr');
+
+        if ($row.index() === 1) {
+            return;
+        }
+
+        $row.prev().before($row.get(0));
+    });
+
+    $tableID.on('click', '.table-down', function () {
+
+        const $row = $(this).parents('tr');
+        $row.next().after($row.get(0));
+    });
+
+    // A few jQuery helpers for exporting only
+    jQuery.fn.pop = [].pop;
+    jQuery.fn.shift = [].shift;
+
+    $BTN.on('click', () => {
+
+        const $rows = $tableID.find('tr:not(:hidden)');
+        const headers = [];
+        const data = [];
+
+        // Get the headers (add special header logic here)
+        $($rows.shift()).find('th:not(:empty)').each(function () {
+
+            headers.push($(this).text().toLowerCase());
+        });
+
+        // Turn all existing rows into a loopable array
+        $rows.each(function () {
+            const $td = $(this).find('td');
+            const h = {};
+
+            // Use the headers from earlier to name our hash keys
+            headers.forEach((header, i) => {
+
+                h[header] = $td.eq(i).text();
+            });
+
+            data.push(h);
+        });
+
+        // Output the result
+        $EXPORT.text(JSON.stringify(data));
+    });
+</script>
+
+<!-- JQuery -->
+<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="js/mdb.min.js"></script>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/greensock/TweenMax.min.js"></script>
-<script src="plugins/greensock/TimelineMax.min.js"></script>
-<script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
-<script src="plugins/greensock/animation.gsap.min.js"></script>
-<script src="plugins/greensock/ScrollToPlugin.min.js"></script>
 <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="plugins/easing/easing.js"></script>
 <script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script src="js/about_custom.js"></script>
+<script src="js/custom.js"></script>
 </body>
 </html>

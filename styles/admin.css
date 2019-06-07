@@ -26,6 +26,13 @@
 	background-color: black;
 }
 
+.ctable {
+	margin-top: 175px;!important;
+}
+.pt-3-half {
+	padding-top: 1.4rem;
+}
+
 /***********
 1. Fonts
 ***********/
@@ -1284,6 +1291,7 @@ section
 .footer
 {
 	background: #15191f;
+
 }
 .footer_logo
 {

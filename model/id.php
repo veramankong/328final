@@ -10,8 +10,9 @@
 error_reporting(E_ALL);
 ini_set("display_errors",1);
 $user = $_SERVER['USER'];
+
 //require "/home/$user/config.php";
-require "/home2/$user/config.php";
+require "/home/$user/config.php";
 
 //Connect to the DB
 try{
@@ -25,14 +26,17 @@ catch (PDOException $e)
 }
 
     //Define the query
-    $sql = "SELECT MAX(customer_id) FROM customer";
+    $sql = "SELECT MAX(customer_id+1) FROM customer";
 //Prepare the statement
     $statement = $dbh->prepare($sql);
 
 //Execute
     $statement->execute();
     $result = $statement->fetch(PDO::FETCH_ASSOC);
-        echo ($result + 1);
+    foreach ($result as $id){
+        echo ("Your customer ID is: " . $id);
+    }
+
 
 
 

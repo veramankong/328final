@@ -2,9 +2,7 @@
 /* CSS Document */
 
 /******************************
-
 [Table of Contents]
-
 1. Fonts
 2. Body and some general stuff
 3. Home
@@ -19,8 +17,6 @@
 9. Info
 10. News
 11. Footer
-
-
 ******************************/
 
 /***********
@@ -72,8 +68,8 @@ div
 	display: block;
 	position: relative;
 	-webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 ul
 {
@@ -126,11 +122,11 @@ p a:hover::after
 }
 ::selection
 {
-	
+
 }
 p::selection
 {
-	
+
 }
 h1{font-size: 40px;}
 h2{font-size: 36px;}
@@ -144,14 +140,14 @@ h1, h2, h3, h4, h5, h6
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
-h1::selection, 
-h2::selection, 
-h3::selection, 
-h4::selection, 
-h5::selection, 
+h1::selection,
+h2::selection,
+h3::selection,
+h4::selection,
+h5::selection,
 h6::selection
 {
-	
+
 }
 .form-control
 {
@@ -239,8 +235,8 @@ section
 }
 .parallax-window
 {
-    min-height: 400px;
-    background: transparent;
+	min-height: 400px;
+	background: transparent;
 }
 .nopadding
 {
@@ -300,9 +296,9 @@ section
 	height: 8px;
 	background: #d2d2d2;
 	margin-top: 5px;
-    margin-right: 6px;
-    margin-bottom: 5px;
-    margin-left: 6px;
+	margin-right: 6px;
+	margin-bottom: 5px;
+	margin-left: 6px;
 }
 .home_slider .owl-dots .owl-dot.active span
 {
@@ -1274,9 +1270,9 @@ section
 	font-size: 11px !important;
 	font-style: italic;
 	color: #c2cbd7 !important;
-} 
+}
 .footer_newsletter_input:-ms-input-placeholder
-{ 
+{
 	font-size: 11px !important;
 	font-style: italic;
 	color: #c2cbd7 !important;

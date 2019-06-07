@@ -255,6 +255,8 @@ $f3->route('GET|POST /reviews', function ($f3) {
 
         if ($isValid) {
             $db->insertreview($firstn, $lastn,$review);
+            $f3->set("errors['submitreview']", "Thank you for submitting a review.");
+
         }
     }
     //Display summary

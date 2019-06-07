@@ -48,18 +48,17 @@ message VARCHAR(500) NULL
  */
 
 /*
+
 CREATE TABLE reviews (
 fname VARCHAR(50) NOT NULL,
 lname VARCHAR(50) NOT NULL,
-phone VARCHAR(20) NOT NULL,
-email VARCHAR(100) NOT NULL,
 review VARCHAR(500) NOT NULL
 )
  */
 
 
 $user = $_SERVER['USER'];
-require "/home/$user/config.php";
+require "/home2/$user/config.php";
 
 /**
  * database Class is for a database for customers
@@ -207,6 +206,26 @@ class Database
 
         //bind parameters
         $statement->bindParam(':member_id', $member_id, PDO::PARAM_STR);
+
+        //execute statement
+        $statement->execute();
+    }
+
+
+    function insertreview($firstn, $lastn, $review)
+    {
+        //define query
+        $query = 'INSERT INTO reviews
+                  (fname, lname, review)
+                  VALUES(:firstn, :lastn,:review)';
+
+        //prepare statement
+        $statement = $this->_db->prepare($query);
+
+        //bind parameters
+        $statement->bindParam(':firstn', $firstn, PDO::PARAM_STR);
+        $statement->bindParam(':lastn', $lastn, PDO::PARAM_STR);
+        $statement->bindParam(':review', $review, PDO::PARAM_INT);
 
         //execute statement
         $statement->execute();

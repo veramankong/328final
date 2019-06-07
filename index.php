@@ -215,8 +215,48 @@ $f3->route('GET|POST /commercialservices', function ($f3) {
 });
 
 //Define a contact route
-$f3->route('GET /reviews', function () {
+$f3->route('GET|POST /reviews', function ($f3) {
+    global $db;
+    $isValid = true;
 
+    if (!empty($_POST)) {
+
+        $firstn = $_POST['firstn'];
+        $lastn = $_POST['lastn'];
+        $review = $_POST['review'];
+
+        //Add data to hive
+        $f3->set('firstn', $firstn);
+        $f3->set('lastn', $lastn);
+        $f3->set('review', $review);
+
+        // validate  first name
+        if (validName($firstn)) {
+            $_SESSION['firstn'] = $firstn;
+        } else {
+            $f3->set("errors['firstn']", "Please enter your first name");
+            $isValid = false;
+        }
+        // validate  first name
+        if (validName($lastn)) {
+            $_SESSION['lastn'] = $lastn;
+        } else {
+            $f3->set("errors['lastn']", "Please enter your last name");
+            $isValid = false;
+        }
+
+
+        if (!empty($review)) {
+            $_SESSION['review'] = $review;
+        } else {
+            $f3->set("errors['review']", "Please enter a review.");
+            $isValid = false;
+        }
+
+        if ($isValid) {
+            $db->insertreview($firstn, $lastn,$review);
+        }
+    }
     //Display summary
     $view = new Template();
     echo $view->render('views/reviews.html');
@@ -314,4 +354,3 @@ $f3->route('GET|POST /admin', function ($f3) {
 //Run Fat-Free
 $f3->run();
 
-?>

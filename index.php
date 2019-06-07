@@ -3,6 +3,7 @@
  * Name: Sukhveer S Jawandha & Vera Mankongvanichkul
  * 05/17/2019
  * 328/328final/index.php
+ * This file represent the all routes of website.
  **/
 
 //Turn on error reporting

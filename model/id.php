@@ -1,10 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: sjawa
- * Date: 6/6/2019
- * Time: 12:45 PM
- */
+ * Name: Sukhveer S Jawandha & Vera Mankongvanichkul
+ * 06/05/2019
+ * 328/328final/model/id.php
+ * This file give new customer a available id from database
+ **/
 
 
 error_reporting(E_ALL);
@@ -32,7 +32,7 @@ catch (PDOException $e)
 //Execute
     $statement->execute();
     $result = $statement->fetch(PDO::FETCH_ASSOC);
-        echo ($result+1);
+        echo ($result + 1);
 
 
 

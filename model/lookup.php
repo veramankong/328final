@@ -1,10 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: sjawa
- * Date: 6/1/2019
- * Time: 12:45 PM
- */
+ * Name: Sukhveer S Jawandha & Vera Mankongvanichkul
+ * 06/05/2019
+ * 328/328final/model/lookup.php
+ * This file get user's info for user when user input the service estimate id if they have one.
+ **/
 // print_r($_POST);
 $id = $_POST['pid'];
 
@@ -21,6 +21,9 @@ try {
 } catch (PDOException $e) {
     echo $e->getMessage();
     return;
+}
+if (empty($_POST)) {
+    echo "Enter a Service Estimate ID.";
 }
 
 if (!empty($_POST)) {
@@ -41,11 +44,9 @@ if (!empty($_POST)) {
         $row = $statement->fetch(PDO::FETCH_ASSOC);
         echo $row['fname'] . ', ' . $row['lname'] . $row['email'] . ', ' . $row['type'] . $row['services'];
     } else {
-        echo "Please Enter a Service Estimate ID.";
+        echo " Enter a Service Estimate ID.";
     }
 }
 
-if (empty($_POST)) {
-    echo "Please Enter a Service Estimate ID.";
-}
+
 

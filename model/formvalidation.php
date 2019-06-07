@@ -1,9 +1,10 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: sjawa
- * Date: 5/29/2019
- */
+ * Name: Sukhveer S Jawandha & Vera Mankongvanichkul
+ * 06/05/2019
+ * 328/328final/model/formvalidation.php
+ * This file conatins methods to validate the form.
+ **/
 
 // first name validation
 function validName($name) {

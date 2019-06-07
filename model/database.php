@@ -1,5 +1,6 @@
 <?php
-/* Sukhveer S Jawandha
+/* <!--
+ * Name: Sukhveer S Jawandha & Vera Mankongvanichkul
  * 06/05/2019
  * 328/328final/model/database.php
  * Database functions to connect database

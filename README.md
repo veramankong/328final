@@ -23,5 +23,5 @@
 * Has full validation on the client side through JavaScript and server side through PHP.
     - Validates everything with php on server side and also requires input with HTML.
 * BONUS:  Incorporates Ajax that access data from a JSON file, PHP script, or API. If you implement Ajax, be sure to talk about it in your presentation.
-    - Search customer ID and serves by id with Ajax.
+    - Search customer ID and services by id with Ajax.
     - Api for google maps.

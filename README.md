@@ -1,5 +1,5 @@
 #West Coast Power-Vac
- IT328 Partner Project
+ * IT328 Partner Project
  *  Team Members:
     - Sukhveer Jawandha 
     - Vera mankongvanichkul

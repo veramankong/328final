@@ -19,9 +19,9 @@
 * Uses OOP, and defines multiple classes, including at least one inheritance relationship.
     - Yes, we have a customer class and one children class.
 * Contains full Docblocks for all PHP files and follows PEAR standards.
-    -All PHP files are fully documented.
+    - All PHP files are fully documented.
 * Has full validation on the client side through JavaScript and server side through PHP.
-    -Validates everything with php on server side and also requires input with HTML.
+    - Validates everything with php on server side and also requires input with HTML.
 * BONUS:  Incorporates Ajax that access data from a JSON file, PHP script, or API. If you implement Ajax, be sure to talk about it in your presentation.
     - Search customer ID and serves by id with Ajax.
     - Api for google maps.

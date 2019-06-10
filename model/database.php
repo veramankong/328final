@@ -66,7 +66,9 @@ review VARCHAR(500) NOT NULL
 
 
 $user = $_SERVER['USER'];
-require "/home/$user/config.php";
+//require "/home/$user/config.php";
+require "/home2/$user/config.php";
+
 
 /**
  * database Class is for a database for customers
@@ -156,6 +158,11 @@ class Database
         return $results;
     }
 
+    /**
+     * Get all customers by customer id
+     * @param $customer_id
+     * @return mixed
+     */
     //get single customer
     function getCustomer($customer_id)
     {
@@ -177,6 +184,14 @@ class Database
         return $result;
     }
 
+    /**
+     * Insert contact info
+     * @param String $fname first name of user
+     * @param String $lname last name of user
+     * @param String $phone phone number of user
+     * @param string $email email of user
+     * @param string $message message of user
+     */
     function insertContact($fname, $lname, $phone, $email, $message)
     {
         //define query
@@ -198,6 +213,10 @@ class Database
         $statement->execute();
     }
 
+    /**
+     * Get all contacts
+     * @return mixed contact info
+     */
     function getContacts()
     {
         //define query
@@ -214,12 +233,17 @@ class Database
         return $results;
     }
 
+    /**
+     * Get customer id by email
+     * @param String $email email of user
+     * @return mixed customer id
+     */
     //get customer_id
     function getCustomerID($email)
     {
         //define query
         $query = "SELECT customer_id FROM customer
-                  WHERE email = :email ";
+                  WHERE email = :email";
 
 
         //prepare statement
@@ -237,6 +261,18 @@ class Database
         return $result;
     }
 
+    /**
+     * update the info of user
+     * @param int $customer_id customer id of user
+     * @param String $fname first name of user
+     * @param  String $lname last name  of user
+     * @param String $phone phone of user
+     * @param  String $email email of user
+     * @param  String $address address of user
+     * @param String $state state of user
+     * @param String $zip zip code of user
+     * @param String $type property type of user
+     */
     //update customer
     function updateCustomer($customer_id, $fname, $lname, $phone, $email, $address, $state, $zip, $type)
     {
@@ -270,6 +306,10 @@ class Database
         $statement->execute();
     }
 
+    /**
+     * delete customer by customer id
+     * @param int $customer_id
+     */
     //delete customer
     function deleteCustomer($customer_id)
     {
@@ -288,6 +328,12 @@ class Database
         $statement->execute();
     }
 
+    /**
+     * insert review info
+     * @param String $firstn firstname of user
+     * @param String $lastn lastname of user
+     * @param String $review review of user
+     */
     function insertReview($firstn, $lastn, $review)
     {
         //define query
@@ -307,6 +353,10 @@ class Database
         $statement->execute();
     }
 
+    /**
+     * get reviews
+     * @return mixed reviews
+     */
     function getReviews()
     {
         //define query
@@ -324,6 +374,10 @@ class Database
         return $results;
     }
 
+    /**
+     * get residential services
+     * @return mixed services
+     */
     //gets residential services
     function getResidential()
     {
@@ -342,6 +396,10 @@ class Database
         return $results;
     }
 
+    /**
+     * get commercial services
+     * @return mixed services
+     */
     //gets commercial services
     function getCommercial()
     {
@@ -360,6 +418,12 @@ class Database
         return $results;
     }
 
+    /**
+     * insert  services
+     * @return mixed services
+     * @param int $customer_id customer id of customer
+     * @param String $services services
+     */
     //inserts into estimates table
     function insertServices($customer_id, $services)
     {
@@ -379,6 +443,10 @@ class Database
         $statement->execute();
     }
 
+    /**
+     * get estimate
+     * @return mixed estimates
+     */
     function getEstimates()
     {
         //define query
@@ -395,6 +463,11 @@ class Database
         return $results;
     }
 
+    /**
+     * insert estimates
+     * @param int $customer_id customer id of customer
+     * @param String $services services
+     */
     function setEstimate($customer_id, $services)
     {
         //define query
@@ -413,6 +486,11 @@ class Database
         $statement->execute();
     }
 
+    /**
+     * get ther services
+     * @param int $service_id service id
+     * @return mixed services
+     */
     function getService($service_id)
     {
         //define query

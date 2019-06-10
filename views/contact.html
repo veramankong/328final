@@ -72,10 +72,17 @@
 
                                     <div class="main_menu_social">
                                         <ul>
-                                            <li><a href="mailto:westcoastpowervac@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-                                            <li><a href="https://www.facebook.com/WestCoastPowerVac"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                            <li><a href="https://www.yelp.com/biz/west-coast-power-vac-bonney-lake?osq=west+coast+power+vac"><i class="fa fa-yelp" aria-hidden="true"></i></a></li>
-                                            <li><a href="https://www.thumbtack.com/wa/bonney-lake/ducts-and-vents/air-duct-dryer-vent-furnace-cleaning-more?fbclid=IwAR1yggRZHepT010vcEtfjwSXVuWPfkbHnoa1XjUATjBJ6QSINDzw2JoRcKc"><i class="fa fa-thumb-tack" aria-hidden="true"></i></a></li>
+                                            <li><a href="mailto:westcoastpowervac@gmail.com"><i class="fa fa-envelope"
+                                                                                                aria-hidden="true"></i></a>
+                                            </li>
+                                            <li><a href="https://www.facebook.com/WestCoastPowerVac"><i
+                                                    class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                            <li>
+                                                <a href="https://www.yelp.com/biz/west-coast-power-vac-bonney-lake?osq=west+coast+power+vac"><i
+                                                        class="fa fa-yelp" aria-hidden="true"></i></a></li>
+                                            <li>
+                                                <a href="https://www.thumbtack.com/wa/bonney-lake/ducts-and-vents/air-duct-dryer-vent-furnace-cleaning-more?fbclid=IwAR1yggRZHepT010vcEtfjwSXVuWPfkbHnoa1XjUATjBJ6QSINDzw2JoRcKc"><i
+                                                        class="fa fa-thumb-tack" aria-hidden="true"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -210,21 +217,21 @@
                         </ul>
                     </div>
                 </div>
+
                 <div class="col-lg-8 contact_form_col">
+
                     <div class="section_title_container">
                         <div class="section_subtitle">request a call from us</div>
                         <div class="section_title">Get in touch</div>
                     </div>
                     <div class="contact_form_container">
                         <form action="#" method="post" class="contact_form">
+                            <h1 class="section_text" style="color: #d39e00">{{ @errors['submitcontact'] }}</h1>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <!-- validation error message -->
-                                    <check if="{{ isset(@errors['firstname']) }}">
-                                        <span class="err">{{ @errors['firstname'] }}</span>
-                                    </check>
+
                                     <input type="text" class="input_item" placeholder="First Name"
-                                           name="firstname" required="required" value="{{ @POST['firstname']}}">
+                                           name="firstname" required="required">
                                 </div>
                                 <div class="col-md-6">
                                     <!-- validation error message -->
@@ -232,15 +239,15 @@
                                         <span class="err">{{ @errors['lastname'] }}</span>
                                     </check>
                                     <input type="text" class="input_item" placeholder="Last Name"
-                                           name="lastname" required="required" value="{{ @POST['lastname']}}">
+                                           name="lastname" required="required" >
                                 </div>
                                 <div class="col-md-6">
-                                <!-- validation error message -->
-                                <check if="{{ isset(@errors['phone']) }}">
-                                    <span class="err">{{ @errors['phone'] }}</span>
-                                </check>
-                                <input type="text" class="input_item" name="phone" required="required" value="{{ @POST['phone']}}"
-                                       placeholder="Your Phone">
+                                    <!-- validation error message -->
+                                    <check if="{{ isset(@errors['phone']) }}">
+                                        <span class="err">{{ @errors['phone'] }}</span>
+                                    </check>
+                                    <input type="text" class="input_item" name="phone" required="required"
+                                           placeholder="Your Phone">
                                 </div>
                                 <div class="col-md-6">
                                     <!-- validation error message -->
@@ -248,7 +255,7 @@
                                         <span class="err">{{ @errors['email'] }}</span>
                                     </check>
                                     <input type="email" class="input_item" placeholder="Your E-mail"
-                                           name="email" value="{{ @POST['email']}}" required="required">
+                                           name="email"  required="required">
                                 </div>
                                 <div class="col-md-12">
                                     <!-- validation error message -->
@@ -256,8 +263,8 @@
                                         <span class="err">{{ @errors['message'] }}</span>
                                     </check>
 
-                                    <textarea class="input_item" name="message" rows="5"
-                                              placeholder="Message">{{@POST['message']}}</textarea>
+                                    <textarea class="input_item" name="message" rows="5" required="required"
+                                              placeholder="Message"></textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <button id="contact_btn" type="submit" class="contact_button trans_200"
@@ -289,12 +296,15 @@
                     <h5 class="mt-1 mb-2">Admin</h5>
 
                     <div class="md-form ml-0 mr-0">
-                        <input type="password" type="text" id="password" name="password" class="form-control form-control-sm validate ml-0">
-                        <label data-error="wrong" data-success="right" for="password" class="ml-0">Enter password</label>
+                        <input type="password" type="text" id="password" name="password"
+                               class="form-control form-control-sm validate ml-0">
+                        <label data-error="wrong" data-success="right" for="password" class="ml-0">Enter
+                            password</label>
                     </div>
 
                     <div class="text-center mt-4">
-                        <button class="btn btn-cyan mt-1" onclick="validate()">Login <i class="fa fa-sign-in ml-1"></i></button>
+                        <button class="btn btn-cyan mt-1" onclick="validate()">Login <i class="fa fa-sign-in ml-1"></i>
+                        </button>
                     </div>
                 </div>
 
@@ -374,6 +384,7 @@
 <!-- Google Maps API -->
 <script>
     var map;
+
     function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 47.2043010, lng: -122.1684670},

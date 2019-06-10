@@ -7,6 +7,11 @@
  **/
 
 // first name validation
+/**
+ * validate the name
+ * @param String $name name of user
+ * @return bool
+ */
 function validName($name) {
     //checks to see that a string is all alphabetic
     return
@@ -14,6 +19,11 @@ function validName($name) {
             (!empty($name)) && ctype_alpha($name));
 }
 
+/**
+ * validate the phone
+ * @param String $phone phone of user
+ * @return bool
+ */
 // phone number validation
 function validPhone($phone) {
     //if user uses parentheses, dashes, or spaces

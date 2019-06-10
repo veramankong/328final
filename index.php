@@ -435,9 +435,10 @@ $f3->route('GET|POST /contact', function ($f3) {
         }
 
         if ($isValid) {
-            $customer_id = $db->getCustomerID($email);
+//            $customer_id = $db->getCustomerID($email);
             $db->insertContact($fname, $lname, $phone, $email, $message);
-            $db->insertContactCustomerId($customer_id);
+            $f3->set("errors['submitcontact']", "Thank you for Contacting, We will get to you soon.");
+//            $db->insertContactCustomerId($customer_id);
         }
 
         //get contact info

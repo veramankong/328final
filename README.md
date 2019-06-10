@@ -15,7 +15,7 @@
 * Data can be viewed, added, updated, and deleted.
     - User's services data can be viewed, added, updated, and deleted by the admin.
 * Has a history of commits from both team members to a Git repository.
-    -All the changing and coding commit history are in github
+    - All the changing and coding commit history are in github
 * Uses OOP, and defines multiple classes, including at least one inheritance relationship.
     - Yes, we have a customer class and one children class.
 * Contains full Docblocks for all PHP files and follows PEAR standards.

@@ -158,7 +158,7 @@ h6::selection
 }
 .form-control
 {
-	color: #db5246;
+	/*color: #db5246;*/
 }
 section
 {
@@ -953,7 +953,7 @@ section
 	width: 100%;
 	padding-top: 110px;
 	padding-bottom: 90px;
-	background: #FFFFFF;
+	background: #f8f8f8;
 }
 .points_container
 {
@@ -1176,7 +1176,7 @@ section
 /*}*/
 .call_form_container
 {
-	margin-top: 76px;
+	margin-top: 55px;
 }
 .call_form
 {

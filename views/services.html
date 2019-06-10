@@ -282,29 +282,28 @@
                 <div class="col d-flex flex-row flex-wrap align-items-start justify-content-start">
                     <!-- Service -->
                     <div class="service text-center">
-                        <div class="service_icon"><img src="images/service_1.svg" class="svg" alt=""></div>
+                        <div class="service_icon"><img src="images/furnace.png" class="svg" alt=""></div>
                         <div class="service_title">Furnace Cleaning/Service</div>
                         <div class="service_text">
-                            <p><strong>Price -</strong> $129</p>
+                            <p class="mr-4"><strong>Price -</strong> $129</p>
                         </div>
                     </div>
 
                     <!-- Service -->
                     <div class="service text-center">
-                        <div class="service_icon"><img src="images/service_3.svg" class="svg" alt=""></div>
+                        <div class="service_icon"><img src="images/duct.png" class="svg" alt=""></div>
                         <div class="service_title">Sanitation/Deodorizing</div>
-                        <div class="service_text text-center">
-                            <p><strong>Price -</strong> $75 w/other services</p><br><br>
+                        <div class="service_text text-center mr-3">
+                            <p><strong>Price -</strong> $75 with other services</p><br><br>
                         </div>
                     </div>
 
                     <!-- Service -->
                     <div class="service text-center">
-                        <div class="service_icon"><img src="images/service_2.svg" class="svg" alt=""></div>
+                        <div class="service_icon"><img src="images/guy.png" class="svg" alt=""></div>
                         <div class="service_title">Dryer Vent Cleaning</div>
-                        <div class="service_text">
-                            <p><strong>Price -</strong> $129 - $189 </p>
-                            <p>$75 w/other services</p>
+                        <div class="service_text mr-3" >
+                            <p><strong>Price -</strong> $129 - $189 <br> $75 with other services</p>
                         </div>
                     </div>
                     <div>
@@ -528,8 +527,14 @@
 
                                     <repeat group="{{ @residentials }}" value="{{ @residential }}">
                                         <div class="custom-control custom-checkbox col-lg-4 mb-3 ml-lg-5">
-                                            <input type="checkbox" class="custom-control-input" id="{{ @residential['service_id'] }}" name="services[]" value="{{@residential['service_id']}}">
+                                            <input type="checkbox" class="custom-control-input" id="{{ @residential['service_id'] }}" name="residential[]" value="{{@residential['service_id']}}">
                                             <label class="custom-control-label" for="{{ @residential['service_id'] }}">{{ @residential['service'] }} - ${{ @residential['price'] }}</label>
+                                        </div>
+                                    </repeat>
+                                    <repeat group="{{ @additionals }}" value="{{ @additional }}">
+                                        <div class="custom-control custom-checkbox col-lg-4 mb-3 ml-lg-5">
+                                            <input type="checkbox" class="custom-control-input" id="{{ @additional['service_id'] }}" name="residential[]" value="{{@additional['service_id']}}">
+                                            <label class="custom-control-label" for="{{ @additional['service_id'] }}">{{ @additional['service'] }} - ${{ @additional['price'] }}</label>
                                         </div>
                                     </repeat>
                                 </div>
@@ -540,7 +545,7 @@
 
                                     <repeat group="{{ @commercials }}" value="{{ @commercial }}">
                                         <div class="custom-control custom-checkbox col-lg-4 mb-3 ml-lg-5">
-                                            <input type="checkbox" class="custom-control-input" id="{{ @commercial['service_id'] }}" name="services[]" value="{{@commercial['service_id']}}">
+                                            <input type="checkbox" class="custom-control-input" id="{{ @commercial['service_id'] }}" name="commercial[]" value="{{@commercial['service_id']}}">
                                             <label class="custom-control-label" for="{{ @commercial['service_id'] }}">{{ @commercial['service'] }} - ${{ @commercial['price'] }}</label>
                                         </div>
                                     </repeat>

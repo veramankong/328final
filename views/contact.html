@@ -218,19 +218,19 @@
                     </div>
                 </div>
 
-                <div class="col-lg-8 contact_form_col">
+                <div class="col-lg-8 contact_form_col shadow-lg">
 
-                    <div class="section_title_container">
+                    <div class="section_title_container shadow-lg">
                         <div class="section_subtitle">request a call from us</div>
                         <div class="section_title">Get in touch</div>
                     </div>
-                    <div class="contact_form_container">
+                    <div class="contact_form_container shadow-lg">
                         <form action="#" method="post" class="contact_form">
                             <h1 class="section_text" style="color: #d39e00">{{ @errors['submitcontact'] }}</h1>
                             <div class="row">
                                 <div class="col-md-6">
 
-                                    <input type="text" class="input_item" placeholder="First Name"
+                                    <input type="text" class="form-control hoverable mb-3" placeholder="First Name"
                                            name="firstname" required="required">
                                 </div>
                                 <div class="col-md-6">
@@ -238,7 +238,7 @@
                                     <check if="{{ isset(@errors['lastname']) }}">
                                         <span class="err">{{ @errors['lastname'] }}</span>
                                     </check>
-                                    <input type="text" class="input_item" placeholder="Last Name"
+                                    <input type="text" class="form-control hoverable mb-3" placeholder="Last Name"
                                            name="lastname" required="required" >
                                 </div>
                                 <div class="col-md-6">
@@ -246,7 +246,7 @@
                                     <check if="{{ isset(@errors['phone']) }}">
                                         <span class="err">{{ @errors['phone'] }}</span>
                                     </check>
-                                    <input type="text" class="input_item" name="phone" required="required"
+                                    <input type="text" class="form-control hoverable mb-3" name="phone" required="required"
                                            placeholder="Your Phone">
                                 </div>
                                 <div class="col-md-6">
@@ -254,7 +254,7 @@
                                     <check if="{{ isset(@errors['email']) }}">
                                         <span class="err">{{ @errors['email'] }}</span>
                                     </check>
-                                    <input type="email" class="input_item" placeholder="Your E-mail"
+                                    <input type="email" class="form-control hoverable mb-3" placeholder="Your E-mail"
                                            name="email"  required="required">
                                 </div>
                                 <div class="col-md-12">
@@ -263,11 +263,11 @@
                                         <span class="err">{{ @errors['message'] }}</span>
                                     </check>
 
-                                    <textarea class="input_item" name="message" rows="5" required="required"
+                                    <textarea class="form-control hoverable mb-3" name="message" rows="5" required="required"
                                               placeholder="Message"></textarea>
                                 </div>
                                 <div class="col-md-12">
-                                    <button id="contact_btn" type="submit" class="contact_button trans_200"
+                                    <button id="contact_btn" type="submit" class="btn orange w-100 white-text mx-auto"
                                             value="Submit">submit
                                     </button>
                                 </div>

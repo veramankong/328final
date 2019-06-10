@@ -25,18 +25,17 @@ catch (PDOException $e)
     return;
 }
 
-    //Define the query
-    $sql = "SELECT MAX(customer_id+1) FROM customer";
+//Define the query
+$sql = "SELECT MAX(customer_id+1) FROM customer";
 //Prepare the statement
-    $statement = $dbh->prepare($sql);
+$statement = $dbh->prepare($sql);
 
 //Execute
-    $statement->execute();
-    $result = $statement->fetch(PDO::FETCH_ASSOC);
-    foreach ($result as $id){
-        echo ("Your customer ID is: " . $id);
-    }
-
+$statement->execute();
+$result = $statement->fetch(PDO::FETCH_ASSOC);
+foreach ($result as $id){
+    echo ("Your customer ID is: " . $id);
+}
 
 
 

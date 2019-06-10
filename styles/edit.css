@@ -20,7 +20,14 @@
 
 ******************************/
 
-
+/*Custom*/
+.ctable {
+	margin-top: 185px;
+	height: 100%;
+}
+body {
+	height: 100%;
+}
 /***********
 1. Fonts
 ***********/
@@ -1286,6 +1293,7 @@ section
 	position: absolute;
 	top: -18px;
 	left: 0px;
+
 }
 .footer_logo .logo_line_1
 {

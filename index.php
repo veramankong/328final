@@ -80,6 +80,7 @@ $f3->route('GET|POST /services', function ($f3) {
         $state = $_POST['state'];
         $type = $_POST['type'];
         $residentials = $_POST['residentials'];
+        $additionals = $_POST['additionals'];
         $commercials = $_POST['commercials'];
 
         //Add data to hive
@@ -93,6 +94,7 @@ $f3->route('GET|POST /services', function ($f3) {
         $f3->set('zip', $zip);
         $f3->set('type', $type);
         $f3->set('residentials', $residentials);
+        $f3->set('additionals', $additionals);
         $f3->set('commercials', $commercials);
 
 
@@ -151,114 +153,67 @@ $f3->route('GET|POST /services', function ($f3) {
             $_SESSION['type'] = $type;
         }
 
-        if(!empty($_POST['services'])) {
-            $services = $_POST['services'];
-            $f3->set('services', $services);
+        //save all residential services
+        if (!empty($_POST['residential'])) {
+            $residential = $_POST['residential'];
+            $f3->set('residential', $residential);
             //$outdoor_string = implode(', ', $outdoor);
-            $_SESSION['services'] = implode(', ', $services);
+            $_SESSION['residential'] = implode(', ', $residential);
         }
 
-        if ($isValid) {
+        //save all commercial services
+        if (!empty($_POST['commercial'])) {
+            $commercial = $_POST['commercial'];
+            $f3->set('commercial', $commercial);
+            //$outdoor_string = implode(', ', $outdoor);
+            $_SESSION['commercial'] = implode(', ', $commercial);
+        }
 
-            if (!empty($type) && $_POST['type'] === "Commercial") {
+        if ($isValid) { //if residential was selected
+            if (!empty($type) && $_POST['type'] === "Residential") {
 
-                $commercial = new commercialcustomer($fname, $lname, $email, $phone, $state, $type);
+                $residential = new residential($fname, $lname, $email, $phone, $state, $type);
+                if (isset($_POST['address'])) {
+                    $residential->setAddress($address);
+                }
+                if (isset($_POST['zip'])) {
+                    $residential->setZip($zip);
+                }
+                $residentials = $_SESSION['residential'];
+                $residential->setServices($residentials);
+                $_SESSION['propertyType'] = $residential;
+
+                //insert customer
+                $db->insertCustomer($fname, $lname, $phone, $email, $address, $state, $zip, $type);
+
+                $customer_id = $db->getCustomerID($fname, $lname);
+                $selectedResidential = $_SESSION['residential'];
+
+                $db->insertServices($customer_id, $selectedResidential);
+
+            } else {
+                //if commercial was selected
+                $commercial = new commercial($fname, $lname, $email, $phone, $state, $zip, $type);
                 if (isset($_POST['address'])) {
                     $commercial->setAddress($address);
                 }
                 if (isset($_POST['zip'])) {
                     $commercial->setZip($zip);
                 }
+                $commercials = $_SESSION['commercial'];
+                $commercial->setServices($commercials);
                 $_SESSION['propertyType'] = $commercial;
 
-                $db->insertCustomer($fname,$lname,$phone,$email,$address,$state,$zip,$type);
-                //$f3->reroute("/commercialservices");
-                //combine if need be
+                $db->insertCustomer($fname, $lname, $phone, $email, $address, $state, $zip, $type);
 
-                $customer_id = $db->getCustomerID($email);
+                $customer_id = $db->getCustomerID($fname, $lname);
+                $selectedCommercial = $_SESSION['commercial'];
 
-                if(!empty($_POST['commercials'])) {
-                    foreach ($commercials as $service_id) {
-                        $service = $db->getService($service_id);
-                        $db->insertServices($customer_id, $service);
-                    }
-                }
-
-
-
-                echo '<h3>Thank you!</h3>';
-            } else {
-
-                $customer = new customer($fname, $lname, $email, $phone, $state, $zip, $type);
-                if (isset($_POST['address'])) {
-                    $customer->setAddress($address);
-                }
-                if (isset($_POST['zip'])) {
-                    $customer->setZip($zip);
-                }
-                $_SESSION['propertyType'] = $customer;
-
-                $db->insertCustomer($fname,$lname,$phone,$email,$address,$state,$zip,$type);
-                //$f3->reroute("/residentialservices");
-                //combine if need be
-
-                $customer_id = $db->getCustomerID($email);
-
-                if(!empty($_POST['commercials'])) {
-                    foreach ($residentials as $service_id) {
-                        $service = $db->getService($service_id);
-                        $db->insertServices($customer_id, $service);
-                    }
-                }
-
-                echo '<h3>Thank you!</h3>';
-
+                //insert services
+                $db->insertServices($customer_id['customer_id'], $selectedCommercial);
             }
         }
-
-//        $propertyType = $_SESSION['propertyType'];
-//
-//        //get residential selections
-//        if(!empty($_POST['residentials'])) {
-//            $residentialIds = $_POST['residentials'];
-//            $f3->set('residentialIds', $residentialIds);
-//            //$outdoor_string = implode(', ', $outdoor);
-//            $_SESSION['residentialIds'] = $residentialIds;
-//            $propertyType->setResidential($residentialIds);
-//        }
-//
-//        //get commercial selections
-//        if(!empty($_POST['commercials'])) {
-//            $commercialIds = $_POST['commercials'];
-//            $f3->set('commercialIds', $commercialIds);
-//            //$indoor_string = implode(', ', $indoor);
-//            $_SESSION['commercials'] = $commercialIds;
-//            $propertyType->setCommercial($commercialIds);
-//        }
-//
-//        if($propertyType instanceof commercialcustomer) {
-//            $commercial = $propertyType->getCommercial();
-//
-//            $customer_id = $db->getCustomerID($fname,$lname);
-//
-//            foreach ($commercial as $service_id) {
-//                $service = $db->getService($service_id);
-//                $db->setEstimate($customer_id['customer_id'], $service['service']);
-//            }
-//        }
-//        else {
-//            $residential = $propertyType->getResidential();
-//
-//            $customer_id = $db->getCustomerID($fname,$lname);
-//
-//            foreach ($residential as $service_id) {
-//                $service = $db->getService($service_id);
-//                $db->setEstimate($customer_id['customer_id'], $service['service']);
-//            }
-//        }
-
     }
-
     $db->connect();
     //get residential services
     $residentials = $db->getResidential();
@@ -267,6 +222,12 @@ $f3->route('GET|POST /services', function ($f3) {
     $f3->set('residentials', $residentials);
     $f3->set('db', $db);
 
+    //get additional services
+    $additionals = $db->getAdditional();
+
+    //set residential and db
+    $f3->set('additionals', $additionals);
+    $f3->set('db', $db);
 
     //get commercial services
     $commercials = $db->getCommercial();
@@ -287,32 +248,6 @@ $f3->route('GET|POST /services', function ($f3) {
     $view = new Template();
     echo $view->render('views/services.html');
 
-});
-
-// residential services
-$f3->route('GET|POST /residentialservices', function ($f3) {
-    $f3->set('page_title', 'Residential Services');
-
-//    var_dump($_SESSION['propertyType']);
-//    return;
-
-
-    //Display summary
-    $view = new Template();
-    echo $view->render('views/residentialservices.html');
-});
-
-
-$f3->route('GET|POST /commercialservices', function ($f3) {
-    $f3->set('page_title', 'Commercial Services');
-
-//   var_dump($_SESSION['propertyType']);
-//    return;
-
-
-    //Display summary
-    $view = new Template();
-    echo $view->render('views/commercialservices.html');
 });
 
 //Define a contact route
@@ -346,7 +281,6 @@ $f3->route('GET|POST /reviews', function ($f3) {
             $isValid = false;
         }
 
-
         if (!empty($review)) {
             $_SESSION['review'] = $review;
         } else {
@@ -357,7 +291,6 @@ $f3->route('GET|POST /reviews', function ($f3) {
         if ($isValid) {
             $db->insertReview($firstn, $lastn,$review);
             $f3->set("errors['submitreview']", "Thank you for submitting a review.");
-
         }
     }
 
@@ -368,7 +301,6 @@ $f3->route('GET|POST /reviews', function ($f3) {
     //set members and db for use in admin
     $f3->set('reviews', $reviews);
     $f3->set('db', $db);
-
 
     //Display summary
     $view = new Template();
@@ -435,10 +367,8 @@ $f3->route('GET|POST /contact', function ($f3) {
         }
 
         if ($isValid) {
-//            $customer_id = $db->getCustomerID($email);
             $db->insertContact($fname, $lname, $phone, $email, $message);
             $f3->set("errors['submitcontact']", "Thank you for Contacting, We will get to you soon.");
-//            $db->insertContactCustomerId($customer_id);
         }
 
         //get contact info
@@ -487,6 +417,14 @@ $f3->route('GET|POST /admin', function ($f3) {
     $f3->set('estimates', $estimates);
     $f3->set('db', $db);
 
+    //get services
+    $services = $db->getServices();
+
+    //set contacts and db for use in admin
+    $f3->set('services', $services);
+    $f3->set('db', $db);
+
+
     //display a view
     $view = new Template();
     echo $view->render('views/admin.html');
@@ -520,12 +458,32 @@ $f3->route("GET|POST /edit/@customer_id", function($f3, $params) {
 
     //confirm deletion of customer
     if(isset($_POST['delete'])) {
-        $db->deleteCustomer($id);
+        $db->deleteEstimate($id);
         $f3->reroute("admin");
     }
 
     $template = new Template();
     echo $template->render('views/edit_customer.html');
+});
+
+// route to delete entry
+$f3->route("GET|POST /delete/@estimate_id", function($f3, $params) {
+
+    global $db;
+    $id = $params['estimate_id'];
+    $estimate = $db->getEstimate($id);
+
+    $f3->set("estimate", $estimate);
+
+
+    //confirm deletion of customer
+    if(isset($_POST['delete'])) {
+        $db->deleteEstimate($id);
+        $f3->reroute("admin");
+    }
+
+    $template = new Template();
+    echo $template->render('views/delete_entry.html');
 });
 
 //Run Fat-Free

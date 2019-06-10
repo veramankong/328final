@@ -19,8 +19,15 @@ class customer
     private $_state;
     private $_type;
 
-
-    // Define parameterized constructor
+    /**
+     * customer constructor
+     * @param $first string customer first name
+     * @param $last string customer last name
+     * @param $email string customer email
+     * @param $phone int customer phone number
+     * @param $state string customer statte
+     * @param $type string customer type
+     */
     function __construct($first,$last, $email, $phone, $state, $type)
     {
         $this->_first = $first;

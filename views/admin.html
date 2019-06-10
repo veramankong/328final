@@ -98,9 +98,7 @@
                                     <th class="text-center">Estimate ID</th>
                                     <th class="text-center">Customer ID</th>
                                     <th class="text-center">Services</th>
-                                    <th class="text-center">Estimate</th>
-
-<!--                                    <th class="text-center">Edit</th>-->
+                                    <th class="text-center">Remove</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -108,17 +106,14 @@
                                     <tr>
                                         <th scope="row">{{ @estimate['estimate_id'] }}</th>
                                         <td class="pt-3-half" contenteditable="true">{{ @estimate['customer_id'] }}</td>
-                                        <td class="pt-3-half" contenteditable="true"><repeat group="{{ @estimates }}" value="{{ @estimate }}">
-                                            *{{ @services }}
-                                        </repeat>{{ @estimate['services'] }}</td>
-                                        <td class="pt-3-half" contenteditable="true">{{ @estimate['estimate'] }}</td>
+                                        <td class="pt-3-half" contenteditable="true">{{ @estimate['services'] }}</td>
 
-<!--                                        <td>-->
-<!--                                        <span class="table-remove">-->
-<!--                                            <a href="edit/{{ @customer['customer_id'] }}"><button type="button"-->
-<!--                                                 class="btn btn-danger btn-rounded btn-sm my-0">Edit</button></a>-->
-<!--                                        </span>-->
-<!--                                        </td>-->
+                                        <td>
+                                        <span class="table-remove">
+                                            <a href="delete/{{ @estimate['estimate_id'] }}"><button type="button"
+                                                    class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></a>
+                                        </span>
+                                        </td>
 
                                     </tr>
                                 </repeat>
@@ -128,6 +123,37 @@
                     </div>
                 </div>
                 <!-- Estimates table -->
+
+                <!-- Service table -->
+                <div class="card m-lg-4">
+                    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Services Table</h3>
+                    <div class="card-body">
+                        <div id="service" class="table-editable">
+                            <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"></a></span>
+                            <table class="table table-bordered table-responsive-md table-striped text-center mt-4">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">Service ID</th>
+                                    <th class="text-center">Service</th>
+                                    <th class="text-center">Type</th>
+                                    <th class="text-center">Price</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <repeat group="{{ @services }}" value="{{ @service }}">
+                                    <tr>
+                                        <th scope="row">{{ @service['service_id'] }}</th>
+                                        <td class="pt-3-half" contenteditable="true">{{ @service['service'] }}</td>
+                                        <td class="pt-3-half" contenteditable="true">{{ @service['type'] }}</td>
+                                        <td class="pt-3-half" contenteditable="true">${{ @service['price'] }}</td>
+                                    </tr>
+                                </repeat>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service table -->
 
                 <!-- Contact table -->
                 <div class="card m-lg-4">
@@ -333,11 +359,36 @@
         </header>
     </div>
 
-    <!-- Intro -->
+    <!-- delete modal -->
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+            <!--Content-->
+            <div class="modal-content text-center">
+                <!--Header-->
+                <div class="modal-header d-flex justify-content-center">
+                    <p class="heading">Confirm Delete?</p>
+                </div>
 
-    <div class="intro">
+                <!--Body-->
+                <div class="modal-body">
 
+                    <i class="fas fa-trash-alt fa-4x animated rotateIn"></i>
+
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer flex-center">
+                    <form action="" method="post">
+                        <button type="submit" class="btn btn-outline-danger" name="delete">Yes</button>
+                    </form>
+                    <a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">No</a>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
     </div>
+    <!--Modal: modalConfirmDelete-->
 
 </div>
 

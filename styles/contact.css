@@ -149,7 +149,7 @@ h6::selection
 }
 .form-control
 {
-	color: #db5246;
+	/*color: #db5246;*/
 }
 section
 {
@@ -944,6 +944,7 @@ section
 {
 	padding-top: 110px;
 	padding-bottom: 110px;
+	background-color: #f8f8f8;!important;
 }
 .info
 {

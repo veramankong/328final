@@ -22,17 +22,29 @@
 /***********
  Custom classes
 ***********/
+.fa-user-circle {
+	margin-top: 44px;
+	color: black;
+}
+
 .bg-black {
 	background-color: black;
 }
 
-.ctable {
-	margin-top: 175px;!important;
+.tables {
+	margin-top: 190px;!important;
 }
 .pt-3-half {
 	padding-top: 1.4rem;
 }
 
+th, .card-header {
+	color: black;
+}
+
+.card-header{
+	text-shadow: 2px 2px 4px gray;
+}
 /***********
 1. Fonts
 ***********/

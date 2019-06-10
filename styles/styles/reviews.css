@@ -19,67 +19,7 @@
 
 
 ******************************/
-/***********
- Custom classes
-***********/
-/* Style the form */
 
-
-/* Style the input fields */
-input {
-	padding: 10px;
-	width: 100%;
-	font-size: 17px;
-	font-family: Raleway;
-	border: 1px solid #aaaaaa;
-}
-
-/* Mark input boxes that gets an error on validation: */
-input.invalid {
-	background-color: #ffdddd;
-}
-
-/* Hide all steps by default: */
-.tab {
-	display: none;
-}
-
-/* Make circles that indicate the steps of the form: */
-.step {
-	height: 15px;
-	width: 15px;
-	margin: 0 2px;
-	background-color: #bbbbbb;
-	border: none;
-	border-radius: 50%;
-	display: inline-block;
-	opacity: 0.5;
-}
-
-/* Mark the active step: */
-.step.active {
-	opacity: 1;
-}
-
-/* Mark the steps that are finished and valid: */
-.step.finish {
-	background-color: #4CAF50;
-}
-
-.fa-user-circle {
-	margin-top: 44px;
-	color: black;
-}
-
-.bg-black {
-	background-color: black;
-}
-
-
-.err
-{
-    color:red;
-}
 /***********
 1. Fonts
 ***********/
@@ -122,8 +62,8 @@ div
 	display: block;
 	position: relative;
 	-webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 ul
 {
@@ -176,11 +116,11 @@ p a:hover::after
 }
 ::selection
 {
-	
+
 }
 p::selection
 {
-	
+
 }
 h1{font-size: 40px;}
 h2{font-size: 36px;}
@@ -194,18 +134,18 @@ h1, h2, h3, h4, h5, h6
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
-h1::selection, 
-h2::selection, 
-h3::selection, 
-h4::selection, 
-h5::selection, 
+h1::selection,
+h2::selection,
+h3::selection,
+h4::selection,
+h5::selection,
 h6::selection
 {
-	
+
 }
 .form-control
 {
-	/*color: #db5246;*/
+	color: #db5246;
 }
 section
 {
@@ -289,8 +229,8 @@ section
 }
 .parallax-window
 {
-    min-height: 400px;
-    background: transparent;
+	min-height: 400px;
+	background: transparent;
 }
 .nopadding
 {
@@ -705,9 +645,9 @@ section
 	transition: all 200ms ease;
 	text-shadow: 2px 2px 4px #000000;
 }.main_menu_list li a:hover
-{
-	color: #11100e;
-}
+ {
+	 color: #11100e;
+ }
 .main_menu_list li a svg
 {
 	display: none;
@@ -999,7 +939,7 @@ section
 {
 	width: 100%;
 	padding-top: 110px;
-	padding-bottom: 50px;
+	padding-bottom: 90px;
 	background: #FFFFFF;
 }
 .points_container
@@ -1203,7 +1143,7 @@ section
 .call
 {
 	width: 100%;
-	background: #FFFFFF;
+	background: #f8f8f8;
 }
 .call_image
 {
@@ -1218,8 +1158,8 @@ section
 }
 .call_container
 {
-	padding-top: 110px;
-	padding-bottom: 110px;
+	padding-top: 40px;
+	padding-bottom: 80px;
 }
 .call_form_container
 {
@@ -1246,10 +1186,10 @@ section
 .dropdown_item
 {
 	-webkit-appearance:none;
-    -moz-appearance:none;
-    -ms-appearance:none;
-    -o-appearance:none;
-    appearance:none;
+	-moz-appearance:none;
+	-ms-appearance:none;
+	-o-appearance:none;
+	appearance:none;
 	-webkit-box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 	-webkit-user-select: none;
 	font-size: 12px !important;
@@ -1290,9 +1230,9 @@ section
 	font-style: italic !important;
 	font-weight: 400 !important;
 	color: #a0a0a0 !important;
-} 
+}
 .input_item:-ms-input-placeholder
-{ 
+{
 	font-size: 12px !important;
 	font-style: italic !important;
 	font-weight: 400 !important;
@@ -1446,9 +1386,9 @@ section
 	font-size: 11px !important;
 	font-style: italic;
 	color: #c2cbd7 !important;
-} 
+}
 .footer_newsletter_input:-ms-input-placeholder
-{ 
+{
 	font-size: 11px !important;
 	font-style: italic;
 	color: #c2cbd7 !important;

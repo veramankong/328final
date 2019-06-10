@@ -19,67 +19,8 @@
 
 
 ******************************/
-/***********
- Custom classes
-***********/
-/* Style the form */
 
 
-/* Style the input fields */
-input {
-	padding: 10px;
-	width: 100%;
-	font-size: 17px;
-	font-family: Raleway;
-	border: 1px solid #aaaaaa;
-}
-
-/* Mark input boxes that gets an error on validation: */
-input.invalid {
-	background-color: #ffdddd;
-}
-
-/* Hide all steps by default: */
-.tab {
-	display: none;
-}
-
-/* Make circles that indicate the steps of the form: */
-.step {
-	height: 15px;
-	width: 15px;
-	margin: 0 2px;
-	background-color: #bbbbbb;
-	border: none;
-	border-radius: 50%;
-	display: inline-block;
-	opacity: 0.5;
-}
-
-/* Mark the active step: */
-.step.active {
-	opacity: 1;
-}
-
-/* Mark the steps that are finished and valid: */
-.step.finish {
-	background-color: #4CAF50;
-}
-
-.fa-user-circle {
-	margin-top: 44px;
-	color: black;
-}
-
-.bg-black {
-	background-color: black;
-}
-
-
-.err
-{
-    color:red;
-}
 /***********
 1. Fonts
 ***********/
@@ -114,7 +55,7 @@ body
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 	font-weight: 400;
-	background: #FFFFFF;
+	background: black;
 	color: #a5a5a5;
 }
 div
@@ -205,7 +146,7 @@ h6::selection
 }
 .form-control
 {
-	/*color: #db5246;*/
+	color: #db5246;
 }
 section
 {
@@ -1068,6 +1009,8 @@ section
 	width: 100%;
 	padding-top: 110px;
 	padding-bottom: 75px;
+	background-color: #15191f;
+
 }
 .services_background
 {
@@ -1336,6 +1279,7 @@ section
 .footer
 {
 	background: #15191f;
+
 }
 .footer_logo
 {

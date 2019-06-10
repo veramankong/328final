@@ -17,7 +17,13 @@
 
 
 ******************************/
-
+/***********
+ Custom classes
+***********/
+.fa-user-circle {
+	margin-top: 44px;
+	color: black;
+}
 /***********
 1. Fonts
 ***********/

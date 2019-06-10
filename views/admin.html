@@ -12,21 +12,16 @@
     <meta name="description" content="Invest project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Font Awesome -->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet">
-    <!-- Your custom styles (optional) -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
 
     <!-- CSS Styles -->
     <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
     <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
     <link rel="stylesheet" type="text/css" href="styles/admin.css">
     <link rel="stylesheet" type="text/css" href="styles/admin_responsive.css">
 
@@ -43,99 +38,159 @@
         <div class="home_slider_container">
 
             <!-- Home Slider -->
-        <div class="ctable">
-<!--            <h1>Customers</h1>-->
-<!--            <table class="table customer">-->
-<!--                <thead>-->
-<!--                <tr>-->
-<!--                    <th scope="col">Customer ID</th>-->
-<!--                    <th scope="col">Name</th>-->
-<!--                    &lt;!&ndash;            <th scope="col">Last Name</th>&ndash;&gt;-->
-<!--                    <th scope="col">Phone</th>-->
-<!--                    <th scope="col">Email</th>-->
-<!--                    <th scope="col">Address</th>-->
-<!--                    <th scope="col">State</th>-->
-<!--                    <th scope="col">Zip</th>-->
-<!--                    <th scope="col">Type</th>-->
-<!--                    <th scope="col">Services</th>-->
-<!--                </tr>-->
-<!--                </thead>-->
-<!--                <tbody>-->
-<!--                <repeat group="{{ @customers }}" value="{{ @customer }}">-->
-<!--                    <tr>-->
-<!--                        <th scope="row">{{ @customer['customer_id'] }}</th>-->
-<!--                        <td>{{ @customer['fname'] }} {{ @customer['lname'] }}</td>-->
-<!--                        <td>{{ @customer['phone'] }}</td>-->
-<!--                        <td>{{ @customer['email'] }}</td>-->
-<!--                        <td>{{ @customer['address'] }}</td>-->
-<!--                        <td>{{ @customer['state'] }}</td>-->
-<!--                        <td>{{ @customer['zip'] }}</td>-->
-<!--                        <td>{{ @customer['type'] }}</td>-->
-<!--                        <td>{{ @customer['services'] }}</td>-->
-<!--                    </tr>-->
-<!--                </repeat>-->
-<!--                </tbody>-->
-<!--            </table>-->
-<!--            <br><br>-->
-            <!-- Editable table -->
-            <div class="card">
-                <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Customer Table</h3>
-                <div class="card-body">
-                    <div id="table" class="table-editable">
-                        <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
-                             class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
-                        <table class="table table-bordered table-responsive-md table-striped text-center">
-                            <thead>
-                            <tr>
-                                <th class="text-center">Customer ID</th>
-                                <th class="text-center">Name</th>
-                                <th class="text-center">Phone</th>
-                                <th class="text-center">Email</th>
-                                <th class="text-center">Address</th>
-                                <th class="text-center">State</th>
-                                <th class="text-center">Zip</th>
-                                <th class="text-center">Type</th>
-<!--                                <th class="text-center">Services</th>-->
-                                <th class="text-center">Sort</th>
-                                <th class="text-center">Remove</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <repeat group="{{ @customers }}" value="{{ @customer }}">
-                                <tr>
-                                    <th scope="row">{{ @customer['customer_id'] }}</th>
-                                    <td class="pt-3-half" contenteditable="true">{{ @customer['fname'] }} {{ @customer['lname'] }}</td>
-                                    <td class="pt-3-half" contenteditable="true">{{ @customer['phone'] }}</td>
-                                    <td class="pt-3-half" contenteditable="true">{{ @customer['email'] }}</td>
-                                    <td class="pt-3-half" contenteditable="true">{{ @customer['address'] }}</td>
-                                    <td class="pt-3-half" contenteditable="true">{{ @customer['state'] }}</td>
-                                    <td class="pt-3-half" contenteditable="true">{{ @customer['zip'] }}</td>
-                                    <td class="pt-3-half" contenteditable="true">{{ @customer['type'] }}</td>
-<!--                                    <td class="pt-3-half" contenteditable="true">{{ @customer['services'] }}</td>-->
-                                    <td class="pt-3-half">
-                                    <span class="table-up"><a href="#!" class="indigo-text"><i
-                                            class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>
-                                        <span class="table-down"><a href="#!" class="indigo-text"><i
-                                                class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
-                                    </td>
-                                    <td>
-                                        <span class="table-remove"><button type="button"
-                                           class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
-                                    </td>
-                                </tr>
-                            </repeat>
-                            </tbody>
-                            <tbody>
+            <div class="tables">
 
-                            </tbody>
-                        </table>
+                <!-- Customers table -->
+                <div class="card m-lg-4">
+                    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Customer Table</h3>
+                    <div class="card-body">
+                        <div id="customers" class="table-editable">
+                            <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"></a></span>
+                            <table class="table table-bordered table-responsive-md table-striped text-center mt-4">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">Customer ID</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Phone</th>
+                                    <th class="text-center">Email</th>
+                                    <th class="text-center">Address</th>
+                                    <th class="text-center">State</th>
+                                    <th class="text-center">Zip</th>
+                                    <th class="text-center">Type</th>
+                                    <th class="text-center">Edit</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <repeat group="{{ @customers }}" value="{{ @customer }}">
+                                    <tr>
+                                        <th scope="row">{{ @customer['customer_id'] }}</th>
+                                        <td class="pt-3-half" contenteditable="true">{{ @customer['fname'] }} {{ @customer['lname'] }}</td>
+                                        <td class="pt-3-half" contenteditable="true">{{ @customer['phone'] }}</td>
+                                        <td class="pt-3-half" contenteditable="true">{{ @customer['email'] }}</td>
+                                        <td class="pt-3-half" contenteditable="true">{{ @customer['address'] }}</td>
+                                        <td class="pt-3-half" contenteditable="true">{{ @customer['state'] }}</td>
+                                        <td class="pt-3-half" contenteditable="true">{{ @customer['zip'] }}</td>
+                                        <td class="pt-3-half" contenteditable="true">{{ @customer['type'] }}</td>
+                                        <td>
+                                        <span class="table-remove">
+                                            <a href="edit/{{ @customer['customer_id'] }}"><button type="button"
+                                                class="btn btn-danger btn-rounded btn-sm my-0">Edit</button></a>
+                                        </span>
+                                        </td>
+                                    </tr>
+                                </repeat>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Editable table -->
+                <!-- Customers table -->
 
+                <!-- Estimates table -->
+                <div class="card m-lg-4">
+                    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Estimates Table</h3>
+                    <div class="card-body">
+                        <div id="estimates" class="table-editable">
+                            <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"></a></span>
+                            <table class="table table-bordered table-responsive-md table-striped text-center mt-4">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">Estimate ID</th>
+                                    <th class="text-center">Customer ID</th>
+                                    <th class="text-center">Services</th>
+                                    <th class="text-center">Estimate</th>
+
+<!--                                    <th class="text-center">Edit</th>-->
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <repeat group="{{ @estimates }}" value="{{ @estimate }}">
+                                    <tr>
+                                        <th scope="row">{{ @estimate['estimate_id'] }}</th>
+                                        <td class="pt-3-half" contenteditable="true">{{ @estimate['customer_id'] }}</td>
+                                        <td class="pt-3-half" contenteditable="true"><repeat group="{{ @estimates }}" value="{{ @estimate }}">
+                                            *{{ @services }}
+                                        </repeat>{{ @estimate['services'] }}</td>
+                                        <td class="pt-3-half" contenteditable="true">{{ @estimate['estimate'] }}</td>
+
+<!--                                        <td>-->
+<!--                                        <span class="table-remove">-->
+<!--                                            <a href="edit/{{ @customer['customer_id'] }}"><button type="button"-->
+<!--                                                 class="btn btn-danger btn-rounded btn-sm my-0">Edit</button></a>-->
+<!--                                        </span>-->
+<!--                                        </td>-->
+
+                                    </tr>
+                                </repeat>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Estimates table -->
+
+                <!-- Contact table -->
+                <div class="card m-lg-4">
+                    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Contact Table</h3>
+                    <div class="card-body">
+                        <div id="contact" class="table-editable">
+                            <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"></a></span>
+                            <table class="table table-bordered table-responsive-md table-striped text-center mt-4">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Phone</th>
+                                    <th class="text-center">Email</th>
+                                    <th class="text-center">Message</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <repeat group="{{ @contacts }}" value="{{ @contact }}">
+                                    <tr>
+                                        <th scope="row">{{ @contact['fname'] }} {{ @contact['lname'] }}</th>
+                                        <td class="pt-3-half" contenteditable="true">{{ @contact['phone'] }}</td>
+                                        <td class="pt-3-half" contenteditable="true">{{ @contact['email'] }}</td>
+                                        <td class="pt-3-half" contenteditable="true">{{ @contact['message'] }}</td>
+                                    </tr>
+                                </repeat>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contact table -->
+
+                <!-- Reviews table -->
+                <div class="card m-lg-4">
+                    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Reviews Table</h3>
+                    <div class="card-body">
+                        <div id="reviews" class="table-editable">
+                            <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"></a></span>
+                            <table class="table table-bordered table-responsive-md table-striped text-center mt-4">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Review</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <repeat group="{{ @reviews }}" value="{{ @review }}">
+                                    <tr>
+                                        <th scope="row">{{ @review['fname'] }} {{ @review['lname'] }}</th>
+                                        <td class="pt-3-half" contenteditable="true">{{ @review['review'] }}</td>
+                                    </tr>
+                                </repeat>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Reviews table -->
+
+
+
+            </div>
         </div>
-    </div>
 
         <!-- Header -->
 
@@ -322,96 +377,25 @@
         </div>
     </div>
 </footer>
-</div>
 
 <script>
-    const $tableID = $('#table');
-    const $BTN = $('#export-btn');
-    const $EXPORT = $('#export');
+    $(document).ready( function () {
 
-    const newTr = `
- <tr class="hide">
-   <td class="pt-3-half" contenteditable="true">Example</td>
-   <td class="pt-3-half" contenteditable="true">Example</td>
-   <td class="pt-3-half" contenteditable="true">Example</td>
-   <td class="pt-3-half" contenteditable="true">Example</td>
-   <td class="pt-3-half" contenteditable="true">Example</td>
-   <td class="pt-3-half">
-     <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>
-     <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
-   </td>
-   <td>
-     <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Remove</button></span>
-   </td>
- </tr>`;
 
-    $('.table-add').on('click', 'i', () => {
-
-        const $clone = $tableID.find('tbody tr').last().clone(true).removeClass('hide table-line');
-
-        if ($tableID.find('tbody tr').length === 0) {
-
-            $('tbody').append(newTr);
-        }
-
-        $tableID.find('table').append($clone);
-    });
-
-    $tableID.on('click', '.table-remove', function () {
-
-        $(this).parents('tr').detach();
-    });
-
-    $tableID.on('click', '.table-up', function () {
-
-        const $row = $(this).parents('tr');
-
-        if ($row.index() === 1) {
-            return;
-        }
-
-        $row.prev().before($row.get(0));
-    });
-
-    $tableID.on('click', '.table-down', function () {
-
-        const $row = $(this).parents('tr');
-        $row.next().after($row.get(0));
-    });
-
-    // A few jQuery helpers for exporting only
-    jQuery.fn.pop = [].pop;
-    jQuery.fn.shift = [].shift;
-
-    $BTN.on('click', () => {
-
-        const $rows = $tableID.find('tr:not(:hidden)');
-        const headers = [];
-        const data = [];
-
-        // Get the headers (add special header logic here)
-        $($rows.shift()).find('th:not(:empty)').each(function () {
-
-            headers.push($(this).text().toLowerCase());
+        var table = $('#table').DataTable( {
+            select: {
+                style: 'multi'
+            }
         });
 
-        // Turn all existing rows into a loopable array
-        $rows.each(function () {
-            const $td = $(this).find('td');
-            const h = {};
+        $("#edit").click(function() {
 
-            // Use the headers from earlier to name our hash keys
-            headers.forEach((header, i) => {
-
-                h[header] = $td.eq(i).text();
-            });
-
-            data.push(h);
+            var selData =   table.rows(".selected").data();
+            alert(selData.length);
         });
 
-        // Output the result
-        $EXPORT.text(JSON.stringify(data));
-    });
+    } );
+
 </script>
 
 <!-- JQuery -->
@@ -425,7 +409,6 @@
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="plugins/easing/easing.js"></script>
 <script src="plugins/parallax-js-master/parallax.min.js"></script>
 <script src="js/custom.js"></script>

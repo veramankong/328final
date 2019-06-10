@@ -12,74 +12,12 @@
 	4.1 Top bar
 	4.2 Main Menu
 5. Menu
-6. Points
-7. Services
-8. Call Back
-9. Footer
+6. Contact
+7. Footer
 
 
 ******************************/
-/***********
- Custom classes
-***********/
-/* Style the form */
 
-
-/* Style the input fields */
-input {
-	padding: 10px;
-	width: 100%;
-	font-size: 17px;
-	font-family: Raleway;
-	border: 1px solid #aaaaaa;
-}
-
-/* Mark input boxes that gets an error on validation: */
-input.invalid {
-	background-color: #ffdddd;
-}
-
-/* Hide all steps by default: */
-.tab {
-	display: none;
-}
-
-/* Make circles that indicate the steps of the form: */
-.step {
-	height: 15px;
-	width: 15px;
-	margin: 0 2px;
-	background-color: #bbbbbb;
-	border: none;
-	border-radius: 50%;
-	display: inline-block;
-	opacity: 0.5;
-}
-
-/* Mark the active step: */
-.step.active {
-	opacity: 1;
-}
-
-/* Mark the steps that are finished and valid: */
-.step.finish {
-	background-color: #4CAF50;
-}
-
-.fa-user-circle {
-	margin-top: 44px;
-	color: black;
-}
-
-.bg-black {
-	background-color: black;
-}
-
-
-.err
-{
-    color:red;
-}
 /***********
 1. Fonts
 ***********/
@@ -205,7 +143,7 @@ h6::selection
 }
 .form-control
 {
-	/*color: #db5246;*/
+	color: #db5246;
 }
 section
 {
@@ -704,7 +642,8 @@ section
 	-o-transition: all 200ms ease;
 	transition: all 200ms ease;
 	text-shadow: 2px 2px 4px #000000;
-}.main_menu_list li a:hover
+}
+.main_menu_list li a:hover
 {
 	color: #11100e;
 }
@@ -992,240 +931,40 @@ section
 }
 
 /*********************************
-6. Points
+6. Contact
 *********************************/
 
-.points
-{
-	width: 100%;
-	padding-top: 110px;
-	padding-bottom: 50px;
-	background: #FFFFFF;
-}
-.points_container
-{
-	margin-top: 108px;
-}
-.point
-{
-	margin-bottom: 102px;
-}
-.point_image
-{
-	width: 76px;
-	height: 76px;
-	border: solid 2px #ffa800;
-	border-radius: 50%;
-	float: left;
-}
-.point_image img
-{
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	-moz-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	-o-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-	max-width: 100%;
-}
-.point_content
-{
-	padding-left: 101px;
-}
-.point_title
-{
-	font-family: 'gill', sans-serif;
-	font-size: 24px;
-	color: #212121;
-	line-height: 0.75;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.point:hover .point_title
-{
-	color: #ffa800;
-}
-.point_text
-{
-	margin-top: 23px;
-}
-.point_text p:last-of-type
-{
-	margin-bottom: 0;
-}
-
-/*********************************
-7. Services
-*********************************/
-
-.services
-{
-	width: 100%;
-	padding-top: 110px;
-	padding-bottom: 75px;
-}
-.services_background
-{
-	background-color: #15191f;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-.service
-{
-	width: calc((100% - 60px) / 3);
-	margin-right: 30px;
-	padding-left: 66px;
-	padding-right: 30px;
-	padding-top: 59px;
-	padding-bottom: 59px;
-	margin-bottom: 35px;
-	background: #f5f9fa;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.service:hover
-{
-	background: #ffa800;
-}
-.service:nth-child(3n+3)
-{
-	margin-right: 0;
-}
-.service_icon
-{
-	width: 61px;
-	height: 61px;
-}
-.service_icon img
-{
-	max-height: 61px;
-}
-.service_icon svg
-{
-	max-width: 100%;
-	max-height: 100%;
-}
-.service_icon svg path
-{
-	fill: #ffa800;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.service:hover svg path
-{
-	fill: #FFFFFF;
-}
-.service_title
-{
-	font-family: 'gill', sans-serif;
-	font-size: 24px;
-	line-height: 1.68;
-	color: #212121;
-	margin-top: 26px;
-	padding-right: 40px;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.service:hover .service_title
-{
-	color: #FFFFFF;
-}
-.service_text
-{
-	margin-top: 18px;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.service_text p
-{
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.service_text p:last-of-type
-{
-	margin-bottom: 0;
-}
-.service:hover .service_text p
-{
-	color: #FFFFFF;
-}
-.service_link
-{
-	margin-top: 35px;
-}
-.service_link a
-{
-	font-size: 14px;
-	font-weight: 600;
-	color: #212121;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
-}
-.service:hover .service_link a
-{
-	color: #FFFFFF;
-}
-.service_link a:hover
-{
-	color: #11100e !important;
-}
-
-/*********************************
-8. Call Back
-*********************************/
-
-.call
-{
-	width: 100%;
-	background: #FFFFFF;
-}
-.call_image
-{
-	position: absolute;
-	bottom: 0;
-	left: 15px;
-	width: 100%;
-}
-.call_image img
-{
-	max-width: 100%;
-}
-.call_container
+.contact
 {
 	padding-top: 110px;
 	padding-bottom: 110px;
 }
-.call_form_container
+.info
 {
-	margin-top: 76px;
+	max-width: 260px;
 }
-.call_form
+.info_title
+{
+	font-family: 'gill', sans-serif;
+	font-size: 30px;
+	color: #212121;
+	margin-top: 50px;
+}
+.info ul
+{
+	margin-top: 19px;
+}
+.info ul li
+{
+	margin-bottom: 19px;
+	font-size: 14px;
+	color: #838383;
+}
+.contact_form_container
+{
+	margin-top: 60px;
+}
+.contact_form
 {
 	width: 100%;
 }
@@ -1270,6 +1009,11 @@ section
 	font-size: 14px;
 	color: #212121;
 }
+.contact_message
+{
+	height: 122px;
+	padding-top: 12px;
+}
 .input_item::-webkit-input-placeholder
 {
 	font-size: 12px !important;
@@ -1305,13 +1049,7 @@ section
 	font-weight: 400 !important;
 	color: #a0a0a0 !important;
 }
-.call_form_submit
-{
-	width: 100%;
-	height: 47px;
-	overflow: hidden;
-}
-.call_button
+.contact_button
 {
 	display: block;
 	position: relative;
@@ -1330,7 +1068,91 @@ section
 }
 
 /*********************************
-9. Footer
+5. Map
+*********************************/
+
+.map
+{
+	width: 100%;
+}
+.google_map
+{
+	width: 100%;
+	height: 605px;
+}
+.map_container
+{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+#map
+{
+	width: 100%;
+	height: calc(100% + 30px);
+}
+.map_contact
+{
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+	left: calc(50vw + 65px);
+	width: 461px;
+	height: 361px;
+}
+.map_contact_inner
+{
+	width: 100%;
+	height: 100%;
+	background: #f8f8f8;
+	padding-left: 60px;
+	padding-right: 20px;
+}
+.map_contact_inner::after
+{
+	display: block;
+	position: absolute;
+	top: 38px;
+	left: 41px;
+	width: 100%;
+	height: 100%;
+	background: #ffa800;
+	content: "";
+	z-index: -1;
+}
+.map_contact_title
+{
+	font-family: 'gill', sans-serif;
+	font-size: 30px;
+	color: #15191f;
+	margin-top: 43px;
+}
+.map_contact ul
+{
+	margin-top: 18px;
+}
+.map_contact ul li
+{
+	font-size: 14px;
+	color: #15191f;
+	line-height: 1.71;
+	margin-bottom: 16px;
+}
+.map_contact ul li:last-child
+{
+	margin-bottom: 0;
+}
+.contact_logo .logo_line_1
+{
+	color: #15191f;
+}
+
+/*********************************
+7. Footer
 *********************************/
 
 .footer

@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 $user = $_SERVER['USER'];
 //require "/home/$user/config.php";
-require "/home2/$user/config.php";
+require "/home/$user/config.php";
 
 //Connect to the DB
 try {
@@ -42,7 +42,7 @@ if (!empty($_POST)) {
 
 //process the result
         $row = $statement->fetch(PDO::FETCH_ASSOC);
-        echo $row['fname'] . ', ' . $row['lname'] . $row['email'] . ', ' . $row['type'] . $row['services'];
+        echo $row['fname'] . ', ' . $row['lname'] . $row['email'] . ', ' . $row['type'];
     } else {
         echo " Enter a Service Estimate ID.";
     }

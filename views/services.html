@@ -12,11 +12,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Invest project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
     <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
     <link rel="stylesheet" type="text/css" href="styles/services.css">
     <link rel="stylesheet" type="text/css" href="styles/services_responsive.css">
 </head>
@@ -304,9 +309,9 @@
                     </div>
                     <div>
                         <label>Enter a Service Estimate ID:
-                            <input type="text" id="estimate" class="input_item" placeholder="Service ID"
+                            <input type="text" id="estimate" class="form-control hoverable" placeholder="Service ID"
                                    name="estimate">
-                            <button id='show' class="call_button">Lookup</button>
+                            <button id='show' class="btn orange white-text w-100 mx-auto">Lookup</button>
                             <div id="detail"></div>
                         </label>
                     </div>
@@ -321,104 +326,242 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="call_container">
                         <div class="section_title_container">
                             <div class="section_subtitle">take a look at our</div>
-                            <div class="section_title">Service Estimate</div>
+                            <div class="section_title mb-lg-4">Service Estimate</div>
                         </div>
-                        <div class="call_form_container">
+                        <div class="container shadow-lg btn-outline-orange p-5">
 
                             <!--for validation -->
-                            <form action="#" method="post" class="call_form">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <input type="text" class="input_item text-center" id="idinput" name="idinput"
+<!--                            <form action="#" method="post" class="call_form">-->
+<!--                                <div class="row">-->
+<!--                                    <div class="col-md-12 form-group">-->
+<!--                                        <input type="text" class="form-control hoverable text-center" id="idinput" name="idinput"-->
+<!--                                               value=" Your customer ID is : {{ @customerId}}" readonly>-->
+<!--                                    </div>-->
+
+<!--                                    <div class="col-md-6 form-group">-->
+<!--                                        &lt;!&ndash; validation error message &ndash;&gt;-->
+<!--                                        <check if="{{ isset(@errors['first']) }}">-->
+<!--                                            <span class="err">{{ @errors['first'] }}</span>-->
+<!--                                        </check>-->
+<!--                                        <input type="text" class="form-control hoverable" placeholder="First Name"-->
+<!--                                               name="first" required="required" value="{{ @POST['first']}}">-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6 form-group">-->
+<!--                                        &lt;!&ndash; validation error message &ndash;&gt;-->
+<!--                                        <check if="{{ isset(@errors['last']) }}">-->
+<!--                                            <span class="err">{{ @errors['last'] }}</span>-->
+<!--                                        </check>-->
+<!--                                        <input type="text" class="form-control hoverable" placeholder="Last Name"-->
+<!--                                               name="last" required="required" value="{{ @POST['last']}}">-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6 form-group">-->
+<!--                                        &lt;!&ndash; validation error message &ndash;&gt;-->
+<!--                                        <check if="{{ isset(@errors['email']) }}">-->
+<!--                                            <span class="err">{{ @errors['email'] }}</span>-->
+<!--                                        </check>-->
+<!--                                        <input type="email" class="form-control hoverable" placeholder="E-mail"-->
+<!--                                               name="email" value="{{ @POST['email']}}" required="required">-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6 form-group">-->
+<!--                                        &lt;!&ndash; validation error message &ndash;&gt;-->
+<!--                                        <check if="{{ isset(@errors['phone']) }}">-->
+<!--                                            <span class="err">{{ @errors['phone'] }}</span>-->
+<!--                                        </check>-->
+<!--                                        <input type="text" class="form-control hoverable" name="phone" value="{{ @POST['phone']}}"-->
+<!--                                               required="required" placeholder="Phone Number">-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-6 form-group">-->
+
+<!--                                        <input type="text" class="form-control hoverable" name="address" placeholder="Address"-->
+<!--                                               value="{{ @POST['address']}}">-->
+<!--                                    </div>-->
+
+<!--                                    <div class="col-md-6 form-group">-->
+
+<!--                                        <input type="text" class="form-control hoverable" name="zip" placeholder="Zip Code"-->
+<!--                                               value="{{ @POST['zip']}}">-->
+<!--                                    </div>-->
+
+<!--                                    <div class="col-md-6 form-group">-->
+<!--                                        &lt;!&ndash; validation error message &ndash;&gt;-->
+<!--                                        <check if="{{ isset(@errors['state']) }}">-->
+<!--                                            <span class="err">{{ @errors['state'] }}</span>-->
+<!--                                        </check>-->
+
+<!--                                        <select class="dropdown-item form-control hoverable custom-select" name="state">-->
+<!--                                            <repeat group="{{ @states }}" value="{{ @stateOption }}">-->
+<!--                                                <option-->
+<!--                                                <check if="{{@stateOption == @$_SESSION['state'] }}">selected</check>-->
+<!--                                                >-->
+<!--                                                {{ @stateOption}}-->
+<!--                                                </option>-->
+<!--                                            </repeat>-->
+<!--                                        </select>-->
+<!--                                    </div>-->
+
+<!--                                    <div class="col-md-6">-->
+<!--                                        &lt;!&ndash; validation error message &ndash;&gt;-->
+<!--                                        <check if="{{ isset(@errors['type']) }}">-->
+<!--                                            <span >{{ @errors['type'] }}</span>-->
+<!--                                        </check>-->
+<!--                                        <select class="dropdown-item form-control custom-select hoverable" name="type">-->
+<!--                                            <repeat group="{{ @types }}" value="{{ @typeOption }}">-->
+<!--                                                <option-->
+<!--                                                <check if="{{@typeOption == @$_SESSION['type'] }}">selected</check>-->
+<!--                                                >-->
+<!--                                                {{ @typeOption}}-->
+<!--                                                </option>-->
+<!--                                            </repeat>-->
+<!--                                        </select>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-md-12">-->
+<!--                                        <button id="call_btn" type="submit" class="btn orange white-text w-100"-->
+<!--                                                value="Submit">submit-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </form>-->
+
+                            <!-- multi-page form -->
+                            <form id="regForm" action="" method="post">
+                                <h1 class="section_text" style="color: #d39e00">{{ @errors['submitreview'] }}</h1>
+                                <div class="row tab">
+                                    <div class="row form-group">
+                                        <div class="col-md-12 form-group">
+                                        <input type="text" class="form-control hoverable text-center" id="idinput" name="idinput"
                                                value=" Your customer ID is : {{ @customerId}}" readonly>
+                                        </div>
                                     </div>
+                                    <div class="row form-group">
+                                        <div class="col-md-6 form-group">
+                                            <!-- validation error message -->
+                                            <check if="{{ isset(@errors['first']) }}">
+                                                <span class="err">{{ @errors['first'] }}</span>
+                                            </check>
+                                            <input type="text" class="form-control hoverable" placeholder="First Name"
+                                                   name="first" required="required" value="{{ @POST['first']}}">
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <!-- validation error message -->
+                                            <check if="{{ isset(@errors['last']) }}">
+                                                <span class="err">{{ @errors['last'] }}</span>
+                                            </check>
+                                            <input type="text" class="form-control hoverable" placeholder="Last Name"
+                                                   name="last" required="required" value="{{ @POST['last']}}">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-md-6 form-group">
+                                            <!-- validation error message -->
+                                            <check if="{{ isset(@errors['email']) }}">
+                                                <span class="err">{{ @errors['email'] }}</span>
+                                            </check>
+                                            <input type="email" class="form-control hoverable" placeholder="E-mail"
+                                                   name="email" value="{{ @POST['email']}}" required="required">
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <!-- validation error message -->
+                                            <check if="{{ isset(@errors['phone']) }}">
+                                                <span class="err">{{ @errors['phone'] }}</span>
+                                            </check>
+                                            <input type="text" class="form-control hoverable" name="phone" value="{{ @POST['phone']}}"
+                                                   required="required" placeholder="Phone Number">
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col-md-6 form-group">
 
-                                    <div class="col-md-6">
-                                        <!-- validation error message -->
-                                        <check if="{{ isset(@errors['first']) }}">
-                                            <span class="err">{{ @errors['first'] }}</span>
-                                        </check>
-                                        <input type="text" class="input_item" placeholder="First Name"
-                                               name="first" required="required" value="{{ @POST['first']}}">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <!-- validation error message -->
-                                        <check if="{{ isset(@errors['last']) }}">
-                                            <span class="err">{{ @errors['last'] }}</span>
-                                        </check>
-                                        <input type="text" class="input_item" placeholder="Last Name"
-                                               name="last" required="required" value="{{ @POST['last']}}">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <!-- validation error message -->
-                                        <check if="{{ isset(@errors['email']) }}">
-                                            <span class="err">{{ @errors['email'] }}</span>
-                                        </check>
-                                        <input type="email" class="input_item" placeholder="E-mail"
-                                               name="email" value="{{ @POST['email']}}" required="required">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <!-- validation error message -->
-                                        <check if="{{ isset(@errors['phone']) }}">
-                                            <span class="err">{{ @errors['phone'] }}</span>
-                                        </check>
-                                        <input type="text" class="input_item" name="phone" value="{{ @POST['phone']}}"
-                                               required="required" placeholder="Phone Number">
-                                    </div>
-                                    <div class="col-md-6">
+                                            <input type="text" class="form-control hoverable" name="address" placeholder="Address"
+                                                   value="{{ @POST['address']}}">
+                                        </div>
 
-                                        <input type="text" class="input_item" name="address" placeholder="Address"
-                                               value="{{ @POST['address']}}">
+                                        <div class="col-md-6 form-group">
+
+                                            <input type="text" class="form-control hoverable" name="zip" placeholder="Zip Code"
+                                                   value="{{ @POST['zip']}}">
+                                        </div>
                                     </div>
+                                    <div class="row form-group">
+                                        <div class="col-md-6 form-group">
+                                            <!-- validation error message -->
+                                            <check if="{{ isset(@errors['state']) }}">
+                                                <span class="err">{{ @errors['state'] }}</span>
+                                            </check>
 
-                                    <div class="col-md-6">
+                                            <select class="dropdown-item form-control hoverable custom-select" name="state">
+                                                <repeat group="{{ @states }}" value="{{ @stateOption }}">
+                                                    <option
+                                                    <check if="{{@stateOption == @$_SESSION['state'] }}">selected</check>
+                                                    >
+                                                    {{ @stateOption}}
+                                                    </option>
+                                                </repeat>
+                                            </select>
+                                        </div>
 
-                                        <input type="text" class="input_item" name="zip" placeholder="Zip Code"
-                                               value="{{ @POST['zip']}}">
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <!-- validation error message -->
-                                        <check if="{{ isset(@errors['state']) }}">
-                                            <span class="err">{{ @errors['state'] }}</span>
-                                        </check>
-
-                                        <select class="dropdown-item input_item" name="state">
-                                            <repeat group="{{ @states }}" value="{{ @stateOption }}">
-                                                <option
-                                                <check if="{{@stateOption == @$_SESSION['state'] }}">selected</check>
-                                                >
-                                                {{ @stateOption}}
-                                                </option>
-                                            </repeat>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <!-- validation error message -->
-                                        <check if="{{ isset(@errors['type']) }}">
-                                            <span class="err">{{ @errors['type'] }}</span>
-                                        </check>
-                                        <select class="dropdown-item input_item" name="type">
-                                            <repeat group="{{ @types }}" value="{{ @typeOption }}">
-                                                <option
-                                                <check if="{{@typeOption == @$_SESSION['type'] }}">selected</check>
-                                                >
-                                                {{ @typeOption}}
-                                                </option>
-                                            </repeat>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <button id="call_btn" type="submit" class="call_button trans_200"
-                                                value="Submit">submit
-                                        </button>
+                                        <div class="col-md-6">
+                                            <!-- validation error message -->
+                                            <check if="{{ isset(@errors['type']) }}">
+                                                <span >{{ @errors['type'] }}</span>
+                                            </check>
+                                            <select class="dropdown-item form-control custom-select hoverable" name="type">
+                                                <repeat group="{{ @types }}" value="{{ @typeOption }}">
+                                                    <option
+                                                    <check if="{{@typeOption == @$_SESSION['type'] }}">selected</check>
+                                                    >
+                                                    {{ @typeOption}}
+                                                    </option>
+                                                </repeat>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <!-- One "tab" for each step in the form: -->
+                                <div class="tab"><h3>Residential Services: </h3><br>
+<!--                                    <p><input placeholder="First name..." oninput="this.className = ''"></p>-->
+<!--                                    <p><input placeholder="Last name..." oninput="this.className = ''"></p>-->
+
+                                    <repeat group="{{ @residentials }}" value="{{ @residential }}">
+                                        <div class="custom-control custom-checkbox col-lg-4 mb-3 ml-lg-5">
+                                            <input type="checkbox" class="custom-control-input" id="{{ @residential['service_id'] }}" name="services[]" value="{{@residential['service_id']}}">
+                                            <label class="custom-control-label" for="{{ @residential['service_id'] }}">{{ @residential['service'] }} - ${{ @residential['price'] }}</label>
+                                        </div>
+                                    </repeat>
+                                </div>
+
+                                <div class="tab"><h3>Commercial Services: </h3><br>
+<!--                                    <p><input placeholder="E-mail..." oninput="this.className = ''"></p>-->
+<!--                                    <p><input placeholder="Phone..." oninput="this.className = ''"></p>-->
+
+                                    <repeat group="{{ @commercials }}" value="{{ @commercial }}">
+                                        <div class="custom-control custom-checkbox col-lg-4 mb-3 ml-lg-5">
+                                            <input type="checkbox" class="custom-control-input" id="{{ @commercial['service_id'] }}" name="services[]" value="{{@commercial['service_id']}}">
+                                            <label class="custom-control-label" for="{{ @commercial['service_id'] }}">{{ @commercial['service'] }} - ${{ @commercial['price'] }}</label>
+                                        </div>
+                                    </repeat>
+                                </div>
+
+
+                                <div style="overflow:auto;">
+                                    <div style="float:right;">
+                                        <br>
+                                        <button type="button" class="btn orange white-text btn-rounded" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                                        <button type="button" class="btn orange white-text btn-rounded" id="nextBtn" name="nextBtn" onclick="nextPrev(1)">Next</button>
+                                    </div>
+                                </div>
+
+                                <!-- Circles which indicates the steps of the form: -->
+                                <div style="text-align:center;margin-top:40px;">
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                </div>
+
                             </form>
                         </div>
                     </div>
@@ -426,6 +569,38 @@
             </div>
         </div>
     </div>
+
+    <!--Modal: Login with Avatar Form-->
+    <div class="modal fade" id="modalLoginAvatar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
+            <!--Content-->
+            <div class="modal-content">
+
+                <!--Header-->
+                <div class="modal-header mx-auto">
+                    <i class="fas fa-user-circle rounded-circle img-responsive fa-10x shadow-lg"></i>
+                </div>
+                <!--Body-->
+                <div class="modal-body text-center mb-1">
+
+                    <h4 class="mt-1 mb-2">Admin</h4>
+
+                    <div class="md-form ml-0 mr-0">
+                        <input type="password" type="text" id="password" name="password" class="form-control form-control-sm validate ml-0">
+                        <label data-error="wrong" data-success="right" for="password" class="ml-0">Enter password</label>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button class="btn btn-orange mt-1" onclick="validate()">Login<i class="fa fa-sign-in ml-1"></i></button>
+                    </div>
+                </div>
+
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!--Modal: Login with Avatar Form-->
 
     <!-- Footer -->
 
@@ -455,7 +630,7 @@
                                 <li><a href="services">Services</a></li>
                                 <li><a href="reviews">Reviews</a></li>
                                 <li><a href="contact">Contact</a></li>
-                                <li><a href="admin">Admin</a></li>
+                                <li><a href="" data-toggle="modal" data-target="#modalLoginAvatar">Admin</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -503,6 +678,115 @@
     });
 
 </script>
+
+<!--admin modal-->
+<script>
+    var attempt = 3; // Variable to count number of attempts.
+    // Below function Executes on click of login button.
+    function validate() {
+        var password = document.getElementById("password").value;
+        if (password == "admin") {
+            alert("Login successful");
+            window.location = "admin"; // Redirecting to other page.
+            return false;
+        } else {
+            attempt--;// Decrementing by one.
+            alert("You have left " + attempt + " attempt;");
+// Disabling fields after 3 attempts.
+            if (attempt == 0) {
+                document.getElementById("password").disabled = true;
+                document.getElementById("submit").disabled = true;
+                return false;
+            }
+        }
+    }
+</script>
+
+<!--multiple step form-->
+<script>
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+
+    function showTab(n) {
+        // This function will display the specified tab of the form ...
+        var x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        // ... and fix the Previous/Next buttons:
+        if (n == 0) {
+            document.getElementById("prevBtn").style.display = "none";
+        } else {
+            document.getElementById("prevBtn").style.display = "inline";
+        }
+        if (n == (x.length - 1)) {
+            document.getElementById("nextBtn").innerHTML = "Submit";
+            // document.getElementsByName("nextBtn")[0].type = "submit";
+
+        } else {
+            document.getElementById("nextBtn").innerHTML = "Next";
+        }
+        // ... and run a function that displays the correct step indicator:
+        fixStepIndicator(n)
+    }
+
+    function nextPrev(n) {
+        // This function will figure out which tab to display
+        var x = document.getElementsByClassName("tab");
+        // Exit the function if any field in the current tab is invalid:
+        if (n == 1 && !validateForm()) return false;
+        // Hide the current tab:
+        x[currentTab].style.display = "none";
+        // Increase or decrease the current tab by 1:
+        currentTab = currentTab + n;
+        // if you have reached the end of the form... :
+        if (currentTab >= x.length) {
+            //...the form gets submitted:
+            document.getElementById("regForm").submit();
+            return false;
+        }
+        // Otherwise, display the correct tab:
+        showTab(currentTab);
+    }
+
+    function validateForm() {
+        // This function deals with validation of the form fields
+        var x, y, i, valid = true;
+        x = document.getElementsByClassName("tab");
+        y = x[currentTab].getElementsByTagName("input");
+        // A loop that checks every input field in the current tab:
+        for (i = 0; i < y.length; i++) {
+            // If a field is empty...
+            if (y[i].value == "") {
+                // add an "invalid" class to the field:
+                y[i].className += " invalid";
+                // and set the current valid status to false:
+                valid = false;
+            }
+        }
+        // If the valid status is true, mark the step as finished and valid:
+        if (valid) {
+            document.getElementsByClassName("step")[currentTab].className += " finish";
+        }
+        return valid; // return the valid status
+    }
+
+    function fixStepIndicator(n) {
+        // This function removes the "active" class of all steps...
+        var i, x = document.getElementsByClassName("step");
+        for (i = 0; i < x.length; i++) {
+            x[i].className = x[i].className.replace(" active", "");
+        }
+        //... and adds the "active" class to the current step:
+        x[n].className += " active";
+    }
+
+</script>
+
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/js/mdb.min.js"></script>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>

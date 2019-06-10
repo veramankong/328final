@@ -12,6 +12,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Invest project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.2/css/mdb.min.css" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
     <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="styles/contact.css">
@@ -266,6 +272,38 @@
         </div>
     </div>
 
+    <!--Modal: Login with Avatar Form-->
+    <div class="modal fade" id="modalLoginAvatar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog cascading-modal modal-avatar modal-sm" role="document">
+            <!--Content-->
+            <div class="modal-content">
+
+                <!--Header-->
+                <div class="modal-header mx-auto">
+                    <i class="fas fa-user-circle rounded-circle img-responsive fa-9x shadow-lg"></i>
+                </div>
+                <!--Body-->
+                <div class="modal-body text-center mb-1">
+
+                    <h5 class="mt-1 mb-2">Admin</h5>
+
+                    <div class="md-form ml-0 mr-0">
+                        <input type="password" type="text" id="password" name="password" class="form-control form-control-sm validate ml-0">
+                        <label data-error="wrong" data-success="right" for="password" class="ml-0">Enter password</label>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button class="btn btn-cyan mt-1" onclick="validate()">Login <i class="fa fa-sign-in ml-1"></i></button>
+                    </div>
+                </div>
+
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!--Modal: Login with Avatar Form-->
+
     <!-- Google Map -->
 
     <div class="map">
@@ -323,7 +361,7 @@
                                 <li><a href="services">Services</a></li>
                                 <li><a href="reviews">Reviews</a></li>
                                 <li><a href="contact">Contact</a></li>
-                                <li><a href="admin">Admin</a></li>
+                                <li><a href="" data-toggle="modal" data-target="#modalLoginAvatar">Admin</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -343,6 +381,30 @@
         });
     }
 </script>
+
+<!--admin modal-->
+<script>
+    var attempt = 3; // Variable to count number of attempts.
+    // Below function Executes on click of login button.
+    function validate() {
+        var password = document.getElementById("password").value;
+        if (password == "admin") {
+            alert("Login successful");
+            window.location = "admin"; // Redirecting to other page.
+            return false;
+        } else {
+            attempt--;// Decrementing by one.
+            alert("You have left " + attempt + " attempt;");
+// Disabling fields after 3 attempts.
+            if (attempt == 0) {
+                document.getElementById("password").disabled = true;
+                document.getElementById("submit").disabled = true;
+                return false;
+            }
+        }
+    }
+</script>
+
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>

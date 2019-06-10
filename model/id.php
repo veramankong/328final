@@ -12,7 +12,7 @@ ini_set("display_errors",1);
 $user = $_SERVER['USER'];
 
 //require "/home/$user/config.php";
-require "/home2/$user/config.php";
+require "/home/$user/config.php";
 
 //Connect to the DB
 try{

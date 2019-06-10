@@ -1,0 +1,41 @@
+/***********
+ Custom classes
+***********/
+.fa-user-circle {
+    margin-top: 44px;
+    color: black;
+}
+
+.bg-black {
+    background-color: black;
+}
+
+.ctable {
+    margin-top: 175px;!important;
+}
+.pt-3-half {
+    padding-top: 1.4rem;
+}
+
+th, .card-header {
+    color: black;
+}
+
+.header-shadow {
+    color: #000;
+    text-shadow: 2px 2px 4px gray;!important;
+}
+
+.gray-shadow {
+    text-shadow: 2px 2px 4px gray;!important;
+}
+
+.edit-header {
+    background-color: gray;
+    height: 150px;
+    margin-top: 0;!important;
+}
+
+.red {
+    color: red;
+}

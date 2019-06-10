@@ -18,7 +18,13 @@
 10. News
 11. Footer
 ******************************/
-
+/***********
+ Custom classes
+***********/
+.fa-user-circle {
+	margin-top: 44px;
+	color: black;
+}
 /***********
 1. Fonts
 ***********/

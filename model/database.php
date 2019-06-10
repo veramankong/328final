@@ -17,25 +17,33 @@ address VARCHAR(100),
 state VARCHAR(30) NOT NUll,
 zip int(6),
 type varchar(20) NOT NULL,
-services VARCHAR(500) NULL
 )
- */
+*/
 
 /*
 CREATE TABLE services (
 service_id INT AUTO_INCREMENT PRIMARY KEY,
-services VARCHAR(50) NOT NULL,
-type varchar(20) NOT NULL
+service VARCHAR(50) NOT NULL,
+type varchar(20) NOT NULL,
+price int(10) NOT NULL
 )
- */
+*/
 
 /*
 CREATE TABLE estimates (
+estimate_id INT AUTO_INCREMENT PRIMARY KEY,
+customer_id int NOT NULL,
+services VARCHAR(500) NOT NULL,
 FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
-FOREIGN KEY (services_id) REFERENCES services(services_id),
 estimate VARCHAR(50) NOT NULL
 )
- */
+
+CREATE TABLE estimates (
+estimate_id INT AUTO_INCREMENT PRIMARY KEY,
+customer_id int NULL,
+services VARCHAR(500) NULL
+)
+*/
 
 /*
 CREATE TABLE contact (
@@ -45,20 +53,20 @@ phone VARCHAR(20) NOT NULL,
 email VARCHAR(100) NOT NULL,
 message VARCHAR(500) NULL
 )
- */
+*/
 
 /*
-
 CREATE TABLE reviews (
+review_id INT AUTO_INCREMENT PRIMARY KEY,
 fname VARCHAR(50) NOT NULL,
 lname VARCHAR(50) NOT NULL,
 review VARCHAR(500) NOT NULL
 )
- */
+*/
 
 
 $user = $_SERVER['USER'];
-require "/home2/$user/config.php";
+require "/home/$user/config.php";
 
 /**
  * database Class is for a database for customers
@@ -106,13 +114,12 @@ class Database
     function insertCustomer($fname, $lname, $phone, $email, $address = "No address",
                             $state,
                             $zip = 'No Zip Code',
-                            $type,
-                            $services)
+                            $type)
     {
         //define query
         $query = 'INSERT INTO customer
-                  (fname, lname, phone, email, address, state, zip, type, services)
-                  VALUES(:fname, :lname, :phone, :email, :address, :state, :zip, :type, :services)';
+                  (fname, lname, phone, email, address, state, zip, type)
+                  VALUES(:fname, :lname, :phone, :email, :address, :state, :zip, :type)';
 
         //prepare statement
         $statement = $this->_db->prepare($query);
@@ -125,7 +132,6 @@ class Database
         $statement->bindParam(':state', $state, PDO::PARAM_STR);
         $statement->bindParam(':zip', $zip, PDO::PARAM_STR);
         $statement->bindParam(':type', $type, PDO::PARAM_STR);
-        $statement->bindParam(':services', $services, PDO::PARAM_INT);
         //execute statement
         $statement->execute();
     }
@@ -150,41 +156,18 @@ class Database
         return $results;
     }
 
-    function insertContact($firstname, $lastname, $phone, $email, $message)
+    //get single customer
+    function getCustomer($customer_id)
     {
         //define query
-        $query = 'INSERT INTO contact
-                  (firstname, lastname, phone, email, message)
-                  VALUES(:firstname, :lastname, :phone, :email, :message)';
+        $query = "SELECT * FROM customer
+                  WHERE customer_id = :customer_id";
 
         //prepare statement
         $statement = $this->_db->prepare($query);
 
         //bind parameters
-        $statement->bindParam(':firstname', $firstname, PDO::PARAM_STR);
-        $statement->bindParam(':lastname', $lastname, PDO::PARAM_STR);
-        $statement->bindParam(':phone', $phone, PDO::PARAM_STR);
-        $statement->bindParam(':email', $email, PDO::PARAM_STR);
-        $statement->bindParam(':message', $message, PDO::PARAM_INT);
-
-        //execute statement
-        $statement->execute();
-    }
-
-    //get customer_id
-    function getCustomerID($fname, $lname)
-    {
-        //define query
-        $query = "SELECT member_id FROM customer
-                  WHERE fname = :fname 
-                  AND lname = :lname";
-
-        //prepare statement
-        $statement = $this->_db->prepare($query);
-
-        //bind parameters
-        $statement->bindParam(':fname', $fname);
-        $statement->bindParam(':lname', $lname);
+        $statement->bindParam(':customer_id', $customer_id);
 
         //execute
         $statement->execute();
@@ -194,25 +177,118 @@ class Database
         return $result;
     }
 
-    //insert customer id
-    function insertContactCustomerId($member_id)
+    function insertContact($fname, $lname, $phone, $email, $message)
     {
         //define query
-        $query = 'INSERT INTO contact (member_id)
-                  VALUES (:member_id)';
+        $query = 'INSERT INTO contact
+                  (fname, lname, phone, email, message)
+                  VALUES(:fname, :lname, :phone, :email, :message)';
 
         //prepare statement
         $statement = $this->_db->prepare($query);
 
         //bind parameters
-        $statement->bindParam(':member_id', $member_id, PDO::PARAM_STR);
+        $statement->bindParam(':fname', $fname, PDO::PARAM_STR);
+        $statement->bindParam(':lname', $lname, PDO::PARAM_STR);
+        $statement->bindParam(':phone', $phone, PDO::PARAM_STR);
+        $statement->bindParam(':email', $email, PDO::PARAM_STR);
+        $statement->bindParam(':message', $message, PDO::PARAM_INT);
 
         //execute statement
         $statement->execute();
     }
 
+    function getContacts()
+    {
+        //define query
+        $query = "SELECT * FROM contact";
 
-    function insertreview($firstn, $lastn, $review)
+        //prepare statement
+        $statement = $this->_db->prepare($query);
+
+        //execute
+        $statement->execute();
+
+        //get results
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+
+    //get customer_id
+    function getCustomerID($email)
+    {
+        //define query
+        $query = "SELECT customer_id FROM customer
+                  WHERE email = :email ";
+
+
+        //prepare statement
+        $statement = $this->_db->prepare($query);
+
+        //bind parameters
+        $statement->bindParam(':email', $email);
+//        $statement->bindParam(':lname', $lname);
+
+        //execute
+        $statement->execute();
+
+        //get result
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    //update customer
+    function updateCustomer($customer_id, $fname, $lname, $phone, $email, $address, $state, $zip, $type)
+    {
+        //define query
+        $query = 'UPDATE customer 
+                  SET fname = :fname,
+                  lname = :lname,
+                  phone = :phone,
+                  email = :email,
+                  address = :address,
+                  state = :state,
+                  zip = :zip,
+                  type = :type
+                  WHERE customer_id = :customer_id';
+
+        //prepare statement
+        $statement = $this->_db->prepare($query);
+
+        //bind parameters
+        $statement->bindParam(':customer_id', $customer_id, PDO::PARAM_STR);
+        $statement->bindParam(':fname', $fname, PDO::PARAM_STR);
+        $statement->bindParam(':lname', $lname, PDO::PARAM_STR);
+        $statement->bindParam(':phone', $phone, PDO::PARAM_STR);
+        $statement->bindParam(':email', $email, PDO::PARAM_STR);
+        $statement->bindParam(':address', $address, PDO::PARAM_STR);
+        $statement->bindParam(':state', $state, PDO::PARAM_STR);
+        $statement->bindParam(':zip', $zip, PDO::PARAM_STR);
+        $statement->bindParam(':type', $type, PDO::PARAM_STR);
+
+        //execute statement
+        $statement->execute();
+    }
+
+    //delete customer
+    function deleteCustomer($customer_id)
+    {
+        //define query
+        $query = 'DELETE FROM customer
+                  WHERE customer_id = :customer_id
+                  LIMIT 1';
+
+        //prepare statement
+        $statement = $this->_db->prepare($query);
+
+        //bind parameter
+        $statement->bindParam(':customer_id', $customer_id, PDO::PARAM_STR);
+
+        //execute statement
+        $statement->execute();
+    }
+
+    function insertReview($firstn, $lastn, $review)
     {
         //define query
         $query = 'INSERT INTO reviews
@@ -229,5 +305,131 @@ class Database
 
         //execute statement
         $statement->execute();
+    }
+
+    function getReviews()
+    {
+        //define query
+        $query = "SELECT fname, lname, review FROM reviews
+                    ORDER BY review_id DESC";
+
+        //prepare statement
+        $statement = $this->_db->prepare($query);
+
+        //execute
+        $statement->execute();
+
+        //get results
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+
+    //gets residential services
+    function getResidential()
+    {
+        //define query
+        $query = "SELECT * FROM services
+                   WHERE type = 'Residential'";
+
+        //prepare statement
+        $statement = $this->_db->prepare($query);
+
+        //execute
+        $statement->execute();
+
+        //get results
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+
+    //gets commercial services
+    function getCommercial()
+    {
+        //define query
+        $query = "SELECT * FROM services
+                   WHERE type = 'Commercial'";
+
+        //prepare statement
+        $statement = $this->_db->prepare($query);
+
+        //execute
+        $statement->execute();
+
+        //get results
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+
+    //inserts into estimates table
+    function insertServices($customer_id, $services)
+    {
+        //define query
+        $query = 'INSERT INTO estimates
+                  (customer_id, services)
+                  VALUES(:customer_id, :services)';
+
+        //prepare statement
+        $statement = $this->_db->prepare($query);
+
+        //bind parameters
+        $statement->bindParam(':customer_id', $customer_id, PDO::PARAM_STR);
+        $statement->bindParam(':services', $services, PDO::PARAM_STR);
+
+        //execute statement
+        $statement->execute();
+    }
+
+    function getEstimates()
+    {
+        //define query
+        $query = "SELECT * FROM estimates";
+
+        //prepare statement
+        $statement = $this->_db->prepare($query);
+
+        //execute
+        $statement->execute();
+
+        //get results
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
+
+    function setEstimate($customer_id, $services)
+    {
+        //define query
+        $query = 'INSERT INTO estimates
+                  (customer_id, services)
+                  VALUES(:customer_id, :services)';
+
+        //prepare statement
+        $statement = $this->_db->prepare($query);
+
+        //bind parameters
+        $statement->bindParam(':customer_id', $customer_id, PDO::PARAM_STR);
+        $statement->bindParam(':services', $services, PDO::PARAM_STR);
+
+        //execute statement
+        $statement->execute();
+    }
+
+    function getService($service_id)
+    {
+        //define query
+        $query = "SELECT service FROM services
+                  WHERE service_id = :service_id";
+
+        //prepare statement
+        $statement = $this->_db->prepare($query);
+
+        //bind parameters
+        $statement->bindParam(':service_id', $service_id);
+
+        //execute
+        $statement->execute();
+
+        //get result
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
     }
 }

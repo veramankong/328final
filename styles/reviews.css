@@ -19,6 +19,18 @@
 
 
 ******************************/
+/***********
+ Custom classes
+***********/
+.fa-user-circle {
+	margin-top: 44px;
+	color: black;
+}
+ul {
+	margin-top: 0;
+	margin-bottom: 0;!important;
+}
+
 
 /***********
 1. Fonts
@@ -56,6 +68,7 @@ body
 	font-weight: 400;
 	background: #FFFFFF;
 	color: #a5a5a5;
+	padding-right: 0;!important;
 }
 div
 {
@@ -1156,11 +1169,11 @@ section
 {
 	max-width: 100%;
 }
-.call_container
-{
-	padding-top: 40px;
-	padding-bottom: 80px;
-}
+/*.call_container*/
+/*{*/
+/*	padding-top: 40px;*/
+/*	padding-bottom: 80px;*/
+/*}*/
 .call_form_container
 {
 	margin-top: 76px;

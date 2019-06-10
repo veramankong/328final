@@ -27,6 +27,25 @@ service VARCHAR(50) NOT NULL,
 type varchar(20) NOT NULL,
 price int(10) NOT NULL
 )
+
+INSERT INTO services(services, type, price)
+VALUES
+('Air Duct Cleaning (1k-2k sq ft)', 'Residential', '259'),
+('Full Service Package Bundle (1k-2k sq ft)', 'Residential', '399'),
+('Air Duct Cleaning (2k-3k sq ft)', 'Residential', '299'),
+('Full Service Package Bundle (2k-3k sq ft)', 'Residential', '459'),
+('Air Duct Cleaning (3k-4k sq ft)', 'Residential', '359'),
+('Full Service Package Bundle (3k-4k sq ft)', 'Residential', '499'),
+('Air Duct Cleaning (4k-5k sq ft)', 'Residential', '399'),
+('Full Service Package Bundle (4k-5k sq ft)', 'Residential', '559'),
+('Air Duct Cleaning (2k-3k sq ft)', 'Commercial', '359'),
+('Full Service Package Bundle (2k-3k sq ft)', 'Commercial', '499'),
+('Air Duct Cleaning (3k-4k sq ft)', 'Commercial', '399'),
+('Full Service Package Bundle (3k-4k sq ft)', 'Commercial', '559'),
+('Air Duct Cleaning (4k-5k sq ft)', 'Commercial', '459'),
+('Full Service Package Bundle (4k-5k sq ft)', 'Commercial', '599'),
+('Air Duct Cleaning (5k-6k sq ft)', 'Commercial', '499'),
+('Full Service Package Bundle (5k-6k sq ft)', 'Commercial', '659');
 */
 
 /*
